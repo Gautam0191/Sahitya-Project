@@ -1,0 +1,119 @@
+/* src/components/Footer.css */
+/* फुटर का मुख्य स्टाइल */
+.footer-section {
+  font-family: 'Siddhanta', serif;
+}
+
+/* 1. न्यूज़लैटर बार - Library Image Background (Image 2 Style) */
+.newsletter-bar {
+  /* आपकी इमेज के हिसाब से किताबों वाला ब्लर बैकग्राउंड */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2000'); 
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+.newsletter-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* टेक्स्ट को इमेज पर उभरने के लिए */
+}
+
+.small-text {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* 2. मुख्य फुटर - लाइट क्रीम */
+.main-footer {
+  background-color: #fdf2f0;
+  padding: 60px 0;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #5d0505;
+  margin-bottom: 20px;
+  display: inline-block;
+  border-bottom: 2px solid #5d0505; /* हेडिंग के नीचे अंडरलाइन */
+  padding-bottom: 5px;
+}
+
+.footer-links a {
+  color: #5a4b48;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  font-size: 1.05rem;
+}
+
+.footer-links a:hover {
+  color: #5d0505;
+  padding-left: 5px;
+}
+
+/* 3. संपर्क फॉर्म */
+.custom-input {
+  background: #ffffff !important;
+  border: 1px solid #dcd0ce !important;
+  color: #2c1810 !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+  transition: 0.3s;
+}
+
+/* इनपुट पर क्लिक करने (Focus) का इफेक्ट */
+.custom-input:focus {
+  border-color: #5d0505 !important;
+  outline: none !important;
+}
+
+.contact-submit-btn {
+  background-color: #5d0505 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: none !important;
+  padding: 12px !important; /* पैडिंग जोड़ दी ताकि बटन सही दिखे */
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* बटन का होवर इफेक्ट */
+.contact-submit-btn:hover {
+  background-color: #3a0303 !important; /* होवर पर रंग थोड़ा गहरा होगा */
+  transform: translateY(-2px); /* हल्का सा ऊपर उठेगा */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* हल्की छाया */
+}
+/* 4. सोशल मीडिया - वापस पुराना स्टाइल + 360° Effect */
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #ffffff; /* सफेद सर्कल */
+  color: #5d0505; /* मरून आइकन */
+  border: 1px solid #dcd0ce;
+  border-radius: 50%;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background-color: #5d0505;
+  color: #ffffff;
+  transform: rotate(360deg);
+}
+
+.copyright-text {
+  color: #8a7a77;
+  font-size: 0.9rem;
+}
+
