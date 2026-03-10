@@ -1,0 +1,18 @@
+body {
+  /* आपके पैलेट का सबसे हल्का क्रीम शेड */
+  background-color: #fdf5f2;
+  margin: 0;
+  font-family: "Noto Serif Devanagari", serif;
+  color: #5a2a3a; /* डार्क महरून टेक्स्ट के लिए */
+}
+
+/* कस्टम CSS स्टाइलिंग */
+:root {
+  --primary-brown: #643242;
+  --light-tan: #f8f2d6;
+  --border-color: #e8d8c8;
+}
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sahitya-sagar/static/css/main.94a1cc9c.css",
+    "main.js": "/sahitya-sagar/static/js/main.fcadace6.js",
+    "static/js/453.c27ac81c.chunk.js": "/sahitya-sagar/static/js/453.c27ac81c.chunk.js",
+    "index.html": "/sahitya-sagar/index.html",
+    "main.94a1cc9c.css.map": "/sahitya-sagar/static/css/main.94a1cc9c.css.map",
+    "main.fcadace6.js.map": "/sahitya-sagar/static/js/main.fcadace6.js.map",
+    "453.c27ac81c.chunk.js.map": "/sahitya-sagar/static/js/453.c27ac81c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94a1cc9c.css",
+    "static/js/main.fcadace6.js"
+  ]
+}

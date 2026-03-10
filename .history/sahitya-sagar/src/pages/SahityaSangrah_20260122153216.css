@@ -1,0 +1,94 @@
+/* Color Palette: #5a2a3a */
+.main-wrapper {
+  background: #fdfaf7;
+  min-height: 100vh;
+  padding-top: 100px;
+  overflow-x: hidden; /* ✅ इसे जोड़ें */
+    height: auto;       /* ✅ पक्का करें कि हाइट ऑटो रहे */
+}
+.page-main-title {
+  color: #5a2a3a;
+  font-family: "serif";
+  font-weight: 500;
+  font-size: 2.2rem;
+}
+.page-subtitle {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+/* List Row */
+.list-item-row {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+.bg-tint {
+  background-color: #f7f1e9;
+}
+.work-title {
+  color: black;
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.author-name {
+  color: #999;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Like Icon */
+.text-danger {
+  color: #e74c3c !important;
+}
+
+/* Modern Side Cards */
+.modern-side-card {
+  padding: 25px;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.modern-side-card:hover {
+  transform: translateY(-5px);
+}
+.card-icon-box {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+.modern-card-title {
+  font-family: "serif";
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.modern-card-desc {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Tags Pills */
+.modern-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.modern-tag {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}

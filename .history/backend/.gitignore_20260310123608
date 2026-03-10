@@ -1,0 +1,11 @@
+# Dependencies (Sabse zaruri)
+node_modules/
+
+# Environment variables (Taki aapke database ka password leak na ho)
+.env
+
+# Logs
+npm-debug.log*
+
+# OS related files
+.DS_Store

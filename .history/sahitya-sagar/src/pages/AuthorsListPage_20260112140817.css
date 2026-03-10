@@ -1,0 +1,91 @@
+/* AuthorsListPage.css */
+
+.authors-list-page {
+    background-color: #fffaf5;
+    min-height: 100vh;
+}
+
+/* हेडिंग स्टाइल */
+.section-line {
+    width: 80px;
+    height: 4px;
+    background: #5a2a3a;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* अल्फाबेट फिल्टर बटन्स */
+.filter-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.letter-btn {
+    min-width: 45px;
+    height: 45px;
+    border: 1px solid #eee;
+    background: white;
+    color: #5a2a3a;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.letter-btn:hover {
+    background-color: #fdf7f2;
+    transform: scale(1.1);
+    border-color: #5a2a3a;
+}
+
+.letter-btn.active {
+    background-color: #5a2a3a;
+    color: white;
+    border-color: #5a2a3a;
+    box-shadow: 0 4px 10px rgba(90, 42, 58, 0.3);
+}
+
+/* लेखक कार्ड स्टाइल */
+.author-card {
+    transition: all 0.4s ease;
+    border: none !important;
+    border-bottom: 4px solid transparent !important;
+}
+
+.author-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(90, 42, 58, 0.1) !important;
+    border-bottom: 4px solid #5a2a3a !important;
+}
+
+.author-image-wrapper {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid #fdf7f2;
+    margin: 0 auto 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.author-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* नो डेटा मैसेज */
+.no-data-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}

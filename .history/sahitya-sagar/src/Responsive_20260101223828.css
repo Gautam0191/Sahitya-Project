@@ -1,0 +1,185 @@
+/* ============================================================
+   SAHITYA SAGAR MASTER RESPONSIVE FILE
+   ============================================================ */
+
+/* --- 1. DESKTOP & LARGE SCREENS (min-width: 992px) --- */
+@media (min-width: 992px) {
+  .navbar-nav { 
+    margin-right: 20px; 
+  }
+  .search-and-icons-wrapper { 
+    margin-left: auto; 
+    display: flex; 
+    align-items: center; 
+  }
+  
+  /* डेस्कटॉप पर 5 कॉलम नाटक सेक्शन के लिए */
+  .col-lg-2-4 { 
+    width: 20%; 
+    flex: 0 0 auto; 
+  }
+
+  /* डेस्कटॉप गैप फिक्स */
+  .carousel-item {
+    min-height: 400px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+/* --- 2. LAPTOP / TABLET LANDSCAPE (Fix for 1024px) --- */
+@media (max-width: 1100px) and (min-width: 992px) {
+  .search-container { 
+    width: 200px !important; 
+  }
+  .logo-text { 
+    font-size: 1.8rem !important; 
+  }
+  .nav-link-custom {
+    margin-left: 8px !important;
+    font-size: 0.95rem !important;
+  }
+  
+  .carousel-item {
+    min-height: 300px !important;
+  }
+}
+
+/* --- 3. MOBILE MENU & SIDEBAR (max-width: 991px) --- */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: fixed !important; 
+    top: 0; 
+    left: 0; 
+    width: 70%; 
+    max-width: 280px;
+    height: 100vh; 
+    background-color: #fff; 
+    z-index: 1050;
+   padding: 20px 0 !important; /* ऊपर-नीचे की पैडिंग */
+   display: flex !important;
+   
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out; 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* स्मूथ ओपनिंग */
+   display: flex !important;
+  }
+
+  .navbar-collapse.show { 
+    transform: translateX(0); 
+  }
+
+  .close-sidebar-btn { 
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    background: none; 
+    border: none; 
+    font-size: 1.8rem; 
+  }
+
+  .menu-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1040;
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-out;
+  }
+
+  .menu-overlay.show { 
+    opacity: 1; 
+    visibility: visible; 
+  }
+
+  /* ✅ मोबाइल आइकन का डिब्बा हटाने के लिए फिक्स */
+  .navbar-toggler {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 5px !important;
+    display: flex;
+  flex-direction: column;
+  gap: 5px; /* डंडियों के बीच की दूरी */
+  }
+}
+
+/* --- 4. TABLETS & PHONES (max-width: 768px) --- */
+@media (max-width: 768px) {
+  /* Footer Responsive */
+  .main-footer { 
+    text-align: center; 
+  }
+  .footer-title { 
+    margin-top: 20px; 
+  }
+  .social-icons { 
+    justify-content: center !important; 
+  }
+
+  /* ✅ Home Section Improvements - गैप फिक्स ✅ */
+  .carousel-item { 
+   height: 220px !important; /* मोबाइल के लिए एक फिक्स सुंदर हाइट */
+    min-height: 220px !important; 
+    max-height: 220px !important;
+    overflow: visible !important; /* फूल दिखाने के लिए */
+  }
+
+  .carousel-item img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important; /* मोबाइल पर भी cover ही रखें ताकि गैप न आए */
+  }
+  
+  .kahani-slider, .authors-slider {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .author-circle {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* डॉट्स का गैप कम किया */
+  .carousel-indicators {
+    margin-top: 5px !important;
+    position: relative !important;
+    bottom: 0px !important;
+  }
+}
+
+/* --- 5. GLOBAL UTILITIES (Always Active) --- */
+@media (min-width: 768px) {
+  .flex-nowrap-md {
+    flex-wrap: nowrap !important;
+  }
+  .overflow-auto-md {
+    overflow-x: auto !important;
+  }
+  .authors-slider > div {
+    padding: 0 10px;
+  }
+}
+
+/* कस्टम स्क्रॉल बार छुपाना */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* ✅ टॉगलर फोकस फिक्स */
+.navbar-toggler:focus, .navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

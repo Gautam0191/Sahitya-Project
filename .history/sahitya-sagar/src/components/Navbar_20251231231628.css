@@ -1,0 +1,136 @@
+/* ------------------ NAVIGATION BAR STYLES ------------------ */
+
+.navbar-custom {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 5px; /* थोड़ा कम किया ताकि जगह मिले */
+  padding-bottom: 5px;
+  position: sticky; 
+  top: 0; 
+  z-index: 1050; 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+}
+
+/* लोगो की मात्रा फिक्स करने के लिए */
+.logo-text {
+  font-family: "Georgia", serif;
+  font-size: 2.2rem; /* थोड़ा छोटा किया ताकि बैलेंस रहे */
+  color: var(--primary-brown);
+  font-weight: bold;
+  text-decoration: none !important;
+  line-height: 1.5 !important; /* मात्राओं के लिए जरूरी जगह */
+  display: inline-block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* --- मुख्य नेविगेशन लिंक्स और अंडरलाइन --- */
+.nav-link-custom {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+  margin-left: 15px;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 8px !important; /* अंडरलाइन के लिए जगह */
+  line-height: 1.4; /* मात्राओं के लिए */
+}
+
+/* 'अन्य' और बाकी लिंक्स पर अंडरलाइन का काम */
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px; 
+  bottom: 0;
+  left: 0;
+  background-color: #5d0505;
+  transition: width 0.3s ease;
+}
+
+.nav-link-custom:hover::after {
+  width: 100% !important; /* होवर पर पूरी लाइन दिखेगी */
+}
+
+.nav-link-custom:hover {
+  color: #5d0505 !important;
+}
+
+/* --- ड्रॉपडाउन फिक्स --- */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: #fdf2f0 !important;
+  border-radius: 0px !important; 
+  border: 1px solid #e2d1cd !important;
+  padding: 5px 0 !important;
+  min-width: 160px !important; 
+  margin-top: 0 !important; /* गैप हटाया ताकि होवर न टूटे */
+  display: none; /* डिफ़ॉल्ट रूप से बंद */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* होवर करने पर ड्रॉपडाउन दिखना */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-item {
+  color: #2c1810 !important; 
+  padding: 10px 15px !important;
+  font-size: 0.95rem;
+  background: transparent !important; 
+  border-bottom: 1px solid #f1e4e1; 
+  transition: all 0.2s ease;
+  line-height: 1.4; /* मात्राओं के लिए */
+}
+
+.dropdown-item:hover {
+  background-color: #f7e8e4 !important; 
+  color: #5d0505 !important; 
+  font-weight: 600;
+  padding-left: 20px !important; 
+}
+
+.dropdown-toggle::after {
+  display: inline-block !important; /* छोटा तीर दिखाने के लिए */
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* सोशल मीडिया आइकन्स */
+.social-icon {
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: transform 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: #5d0505;
+}
+
+/* सर्च बार */
+.search-container {
+  background-color: var(--light-tan);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  width: 300px; /* 1024px के लिए थोड़ा कम किया */
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--primary-brown);
+  padding: 2px 8px;
+}

@@ -1,0 +1,184 @@
+/* कस्टम CSS स्टाइलिंग */
+:root {
+  --primary-brown: #643242;
+  --light-tan: #f8f2d6;
+  --border-color: #e8d8c8;
+}
+
+/* ------------------ NAVIGATION BAR STYLES ------------------ */
+
+.navbar-custom {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: sticky; /* नेवबार को ऊपर चिपकाए रखने के लिए */
+  top: 0; /* टॉप से चिपका रहेगा */
+  z-index: 1050; /* ये सुनिश्चित करेगा कि कॉन्टेंट इसके नीचे से जाए */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* हल्का सा शैडो ताकि ये अलग दिखे */
+}
+.logo-text {
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  color: var(--primary-brown);
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-link-custom {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+  margin-left: 15px;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+}
+.nav-link-custom:hover {
+  color: #92586a !important;
+}
+
+/* सोशल मीडिया आइकन्स */
+.social-icon {
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: transform 0.3s, color 0.3s;
+}
+.social-icon:hover {
+  color: #92586a;
+  transform: scale(1.1);
+}
+
+/* सर्च बार */
+.search-container {
+  background-color: var(--light-tan);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  width: 350px;
+}
+.search-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--primary-brown);
+}
+.search-icon-btn {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--primary-brown);
+}
+
+/* --- डेस्कटॉप व्यू (Large Screen) --- */
+@media (min-width: 992px) {
+  .navbar-nav {
+    margin-right: 20px;
+  }
+  .search-and-icons-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* --- मोबाइल/साइडबार व्यू --- */
+@media (max-width: 991.98px) {
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1050;
+    padding: 60px 20px 20px 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    display: block;
+  }
+
+  .navbar-collapse.show {
+    transform: translateX(0);
+  }
+
+  .navbar-collapse.collapsing {
+    height: 100vh !important;
+    transition: none;
+  }
+
+  .close-sidebar-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    cursor: pointer;
+    z-index: 1060;
+  }
+
+  .navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column !important;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-link-custom {
+    margin-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-toggler {
+    margin-right: auto;
+    order: 1;
+    z-index: 1051;
+  }
+  .navbar-brand {
+    order: 2;
+    margin: 0 auto;
+  }
+  .search-and-icons-wrapper {
+    display: none !important;
+  }
+  .navbar-collapse {
+    order: 3;
+  }
+}
+

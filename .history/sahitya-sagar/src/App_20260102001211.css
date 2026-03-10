@@ -1,0 +1,126 @@
+/* --- 1. FONTS (गूगल फॉन्ट) --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* --- 2. GLOBAL VARIABLES (रंग और वेरिएबल्स) --- */
+:root {
+  --primary-brown: #643242;
+  --light-tan: #f8f2d6;
+  --border-color: #e8d8c8;
+  --bg-cream: #fdf5f2; /* आपका बेस क्रीम कलर */
+  --text-maroon: #5a2a3a;
+}
+/* App.css के सबसे ऊपर डालें */
+html, body {
+  margin: 0 !important;
+ padding-top: 48px !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important; /* यह दाईं ओर की पट्टी को गायब कर देगा */
+  position: relative;
+}
+
+/* Bootstrap की Rows अक्सर एक्स्ट्रा मार्जिन लेती हैं, उन्हें फिक्स करें */
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.container, .container-fluid {
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+  width: 100% !important;
+  overflow: hidden;
+}
+
+/* --- 3. BASIC RESET & BODY SETTINGS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-cream);
+  margin: 0;
+  font-family: "Noto Serif Devanagari", serif;
+  color: var(--text-maroon);
+  line-height: 1.6;
+  overflow-x: hidden; /* मोबाइल पर एक्स्ट्रा स्पेस रोकने के लिए */
+}
+
+/* --- 4. COMMON UTILITIES (आम क्लासेज) --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* स्क्रॉल बार छुपाने के लिए ग्लोबल यूटिलिटी */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* --- 5. IMAGE OPTIMIZATION --- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+/* डेस्कटॉप स्क्रीन (1024px और 1440px) के लिए गैप फिक्स */
+@media (min-width: 992px) {
+  #heroCarousel, 
+  #heroCarousel .carousel-inner, 
+  #heroCarousel .carousel-item {
+    height: 450px !important; /* वही हाइट जो Home.jsx में दी है */
+    background-color: transparent !important; /* नीचे वाला कलर हटा देगा */
+  }
+}
+
+/* मोबाइल स्क्रीन के लिए */
+@media (max-width: 767px) {
+  #heroCarousel, 
+  #heroCarousel .carousel-inner, 
+  #heroCarousel .carousel-item {
+    height: 220px !important;
+  }
+}
+
+/* इमेज को पूरा स्ट्रेच करने के लिए */
+#heroCarousel .carousel-item img {
+  min-height: 100%;
+}/* ✅ सभी 'समस्त संग्रह' बटनों के लिए एक ही स्टाइल */
+.btn-global-sangrah {
+  background: transparent;
+  border: 2px solid #5a2a3a; /* आपका सिग्नेचर वाइन कलर */
+  border-radius: 50px;
+  color: #5a2a3a;
+  padding: 10px 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-global-sangrah:hover {
+  background-color: #5a2a3a;
+  color: #fff1c9; /* हल्का क्रीम रंग टेक्स्ट के लिए */
+  transform: translateY(-3px); /* हल्का सा ऊपर उठेगा */
+  box-shadow: 0 4px 15px rgba(90, 42, 58, 0.2);
+}

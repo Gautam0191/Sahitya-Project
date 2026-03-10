@@ -1,0 +1,848 @@
+body {
+  /* आपके पैलेट का सबसे हल्का क्रीम शेड */
+  background-color: #fdf5f2;
+  margin: 0;
+  font-family: "Noto Serif Devanagari", serif;
+  color: #5a2a3a; /* डार्क महरून टेक्स्ट के लिए */
+}
+
+/* कस्टम CSS स्टाइलिंग */
+:root {
+  --primary-brown: #643242;
+  --light-tan: #f8f2d6;
+  --border-color: #e8d8c8;
+}
+
+/* ------------------ NAVIGATION BAR STYLES ------------------ */
+
+.navbar-custom {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: sticky; /* नेवबार को ऊपर चिपकाए रखने के लिए */
+  top: 0; /* टॉप से चिपका रहेगा */
+  z-index: 1050; /* ये सुनिश्चित करेगा कि कॉन्टेंट इसके नीचे से जाए */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* हल्का सा शैडो ताकि ये अलग दिखे */
+}
+.logo-text {
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  color: var(--primary-brown);
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-link-custom {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+  margin-left: 15px;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+}
+.nav-link-custom:hover {
+  color: #92586a !important;
+}
+
+/* सोशल मीडिया आइकन्स */
+.social-icon {
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: transform 0.3s, color 0.3s;
+}
+.social-icon:hover {
+  color: #92586a;
+  transform: scale(1.1);
+}
+
+/* सर्च बार */
+.search-container {
+  background-color: var(--light-tan);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  width: 350px;
+}
+.search-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--primary-brown);
+}
+.search-icon-btn {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--primary-brown);
+}
+
+/* --- डेस्कटॉप व्यू (Large Screen) --- */
+@media (min-width: 992px) {
+  .navbar-nav {
+    margin-right: 20px;
+  }
+  .search-and-icons-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* --- मोबाइल/साइडबार व्यू --- */
+@media (max-width: 991.98px) {
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1050;
+    padding: 60px 20px 20px 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    display: block;
+  }
+
+  .navbar-collapse.show {
+    transform: translateX(0);
+  }
+
+  .navbar-collapse.collapsing {
+    height: 100vh !important;
+    transition: none;
+  }
+
+  .close-sidebar-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    cursor: pointer;
+    z-index: 1060;
+  }
+
+  .navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column !important;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-link-custom {
+    margin-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-toggler {
+    margin-right: auto;
+    order: 1;
+    z-index: 1051;
+  }
+  .navbar-brand {
+    order: 2;
+    margin: 0 auto;
+  }
+  .search-and-icons-wrapper {
+    display: none !important;
+  }
+  .navbar-collapse {
+    order: 3;
+  }
+}
+/* --- HERO CAROUSEL STYLES --- */
+
+/* ------------------ CAROUSEL STYLES (REFINED) ------------------ */
+
+.carousel-item {
+  max-height: 400px;
+  overflow: hidden;
+  background-color: #fdf6e3; /* इमेज के पीछे का बैकग्राउंड मैच करने के लिए */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 'cover' से इमेज कट सकती है, 'contain' साहित्य सागर बैनर के लिए बेहतर है */
+  object-position: center;
+}
+
+/* ✅ इंडिकेटर सेक्शन - इमेज के नीचे ✅ */
+.carousel-indicators {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 25px !important;
+  margin-bottom: 20px !important;
+  z-index: 5;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 40px !important;
+  height: 5px !important;
+  background-color: #ccc !important; /* डिफ़ॉल्ट हल्का ग्रे */
+  border: none !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  margin: 0 6px !important;
+}
+
+.carousel-indicators .active {
+  background-color: var(
+    --primary-brown
+  ) !important; /* एक्टिव होने पर आपका थीम कलर */
+  opacity: 1 !important;
+  width: 60px !important; /* एक्टिव लाइन थोड़ी बड़ी दिखेगी */
+}
+
+/* साइड एरो को डार्क करने के लिए ताकि पीले बैकग्राउंड पर दिखें */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+/* --- कविता सेक्शन स्टाइल (Poetry Section) - No Animation Version --- */
+
+:root {
+  --primary-pink: #5a2a3a !important;
+  --light-cream: #fbf1c9;
+  --bg-page: #fff9eb; /* आपका पेज बैकग्राउंड */
+  --accent-tan: #e6d5b8;
+  --dark-text: #4a2c3a;
+}
+
+.section-heading {
+  font-family: "Georgia", serif;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.section-subheading {
+  color: #666;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* कार्ड का मुख्य डिज़ाइन - एकदम स्थिर */
+.poetry-card-v2 {
+  background: #ffffff !important;
+  border-radius: 12px;
+  border: 1px solid var(--accent-tan);
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(74, 44, 58, 0.08); /* स्थिर परछाई */
+  cursor: pointer !important; /* हाथ वाला आइकॉन */
+  transition: all 0.3s ease-in-out; /* स्मूथ इफ़ेक्ट */
+  position: relative;
+}
+
+/* होवर पर सिर्फ बॉर्डर का रंग बदलेगा, कार्ड हिलेगा नहीं */
+.poetry-card-v2:hover {
+  border-color: var(--primary-pink);
+  box-shadow: 0 4px 15px rgba(163, 92, 122, 0.2) !important;
+}
+
+/* इमेज की सेटिंग - कोई ज़ूम नहीं */
+.card-img-wrapper {
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  background-color: var(--light-cream);
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* कार्ड के अंदर का टेक्स्ट */
+.card-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.poetry-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.poet-name {
+  font-size: 0.85rem;
+  color: var(--primary-pink);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* बटन का डिज़ाइन */
+.premium-btn {
+  background-color: var(--primary-pink);
+  color: white;
+  border: 2px solid var(--primary-pink);
+  padding: 12px 35px;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(163, 92, 122, 0.3);
+}
+
+/* --- मोबाइल सेटिंग्स --- */
+@media (max-width: 768px) {
+  .card-img-wrapper {
+    height: 140px;
+  }
+
+  .poetry-title {
+    font-size: 0.9rem;
+  }
+
+  .row-cols-2 > .mx-auto {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 8px;
+  }
+}
+/* --- कथा कलश (Kahani Section) Premium UI --- */
+.kahani-section {
+  background-color: #ffffff; /* लाइट क्रीम बैकग्राउंड */
+  padding: 4rem 0;
+  margin-top: 40px;
+
+  font-family: "Noto Serif Devanagari", serif;
+  overflow-x: hidden;
+}
+
+.section-title {
+  color: #5a2a3a !important; /* गहरा महरून रंग */
+  font-weight: 700;
+}
+
+.title-underline {
+  width: 60px;
+  height: 3px;
+  background-color: #ad1457;
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+/* --- Main Kahani Card (Static & Clickable) --- */
+
+/* 1. कार्ड और उसके अंदर के हिस्सों का रंग */
+.main-kahani-card,
+.main-kahani-card .card-body,
+.main-kahani-card div[class*="col-"] {
+  background-color: #f2efe9 !important; /* क्रीम बैकग्राउंड */
+  cursor: pointer !important; /* हाथ वाला आइकॉन */
+  transition: border-color 0.3s ease; /* सिर्फ बॉर्डर बदलने के लिए */
+}
+
+/* 2. कार्ड का स्ट्रक्चर */
+.main-kahani-card {
+  border: 1px solid #e0ddd5;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* हल्की स्थिर छाया */
+}
+
+/* 3. होवर इफेक्ट - कार्ड हिलेगा नहीं, सिर्फ बॉर्डर चमकेगी */
+.main-kahani-card:hover {
+  border-color: #5a2a3a; /* आपके वाइन रंग की बॉर्डर आएगी */
+  /* transform: translateY या scale यहाँ नहीं डाला है, इसलिए यह हिलेगा नहीं */
+}
+
+/* 4. इमेज स्टाइल */
+.main-kahani-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.featured-img-box {
+  height: 100%;
+  min-height: 350px;
+}
+
+.featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.main-kahani-card:hover .featured-img {
+  transform: scale(1.05);
+}
+
+.tag-label {
+  background: #b65a7a;
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.main-title {
+  color: #5a2a3a;
+  font-size: 1.8rem;
+}
+
+/* --- SMALL CARDS & SWIPE SLIDER --- */
+.kahani-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 15px;
+  padding-bottom: 20px;
+}
+
+/* स्क्रॉल बार छुपाने के लिए */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.kahani-small-card {
+  border-radius: 12px;
+  overflow: hidden;
+  /* यह रंग कार्ड को सफेद बैकग्राउंड से अलग दिखाएगा */
+  background-color: #f2efe9 !important;
+  border: 1px solid #e0ddd5;
+  cursor: pointer !important; /* हाथ वाला आइकॉन */
+  transition: all 0.3s ease-in-out; /* स्मूथ इफ़ेक्ट */
+  position: relative;
+}
+
+.kahani-small-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.kahani-small-card:hover {
+  background: #ffd1b3 !important; /* आपके क्रीम पैलेट से मैच करता हुआ */
+  transform: translateY(-5px);
+}
+
+.btn-samast-sangrah {
+  background-color: transparent;
+  color: #5a2a3a;
+  border: 2px solid #5a2a3a;
+  padding: 10px 40px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-samast-sangrah:hover {
+  background-color: #5a2a3a;
+  color: #fff1c9;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 1.4rem;
+  }
+  .featured-img-box {
+    min-height: 250px;
+  }
+  .kahani-slider {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+/* --- नाट्य मंच (Final Updated Version) --- */
+.natak-section-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* पूरी बॉडी की विड्थ लेने वाला बैनर */
+.full-width-natak-banner {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: linear-gradient(rgba(90, 42, 58, 0.8), rgba(90, 42, 58, 0.8)),
+    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600");
+  background-size: cover;
+  background-position: center;
+  min-height: 250px;
+}
+
+.natak-quote-text {
+  color: #fff1c9;
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* वर्गाकार कार्ड्स - UPDATED */
+.natak-square-card {
+  background: transparent;
+}
+
+.square-frame {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important; /* हाथ वाला आइकॉन */
+  transition: all 0.3s ease-in-out; /* स्मूथ इफ़ेक्ट */
+  position: relative;
+}
+
+/* होवर करने पर नाटक वाले कार्ड्स का इफ़ेक्ट */
+.square-frame:hover {
+  border-color: #5a2a3a; /* आपके कलर पैलेट वाली बॉर्डर */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* गहरी छाया */
+  background: #fff; /* होवर पर हल्का सा बैकग्राउंड बदलाव */
+}
+
+.square-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* इमेज के लिए भी स्मूथनेस */
+}
+
+/* रेस्पॉन्सिव सेटिंग्स */
+
+/* मोबाइल पर 4 इमेज के लिए (2x2) */
+@media (max-width: 767px) {
+  .mobile-hide-5th {
+    display: none !important; /* 5वीं इमेज मोबाइल पर गायब */
+  }
+}
+
+/* डेस्कटॉप पर 5 कॉलम सेटअप */
+@media (min-width: 992px) {
+  .col-lg-2-4 {
+    width: 20%;
+    flex: 0 0 auto;
+  }
+}
+/* विषयानुसार कविता कार्ड्स */
+.canva-card-frame {
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease; /* स्मूथ इफ़ेक्ट के लिए */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.canva-card-frame img {
+  pointer-events: none; /* इससे इमेज टच इवेंट को ब्लॉक नहीं करेगी और स्वाइप स्मूथ होगा */
+  user-select: none;
+}
+
+/* नेविगेशन बटन्स - अपडेटेड स्टाइल */
+.s-next,
+.s-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  
+  width: 50px;
+  height: 50px;
+
+ 
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #5a2a3a;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+
+  
+  font-size: 1.2rem;
+
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.s-prev {
+  left: -35px;
+}
+.s-next {
+  right: -35px;
+}
+
+/* 5. होवर इफ़ेक्ट: केवल होवर करने पर ही बैकग्राउंड #5a2a3a होगा */
+.s-next:hover,
+.s-prev:hover {
+  background-color: #5a2a3a;
+  color: #fff;
+  border-color: #5a2a3a;
+  transform: translateY(-50%) scale(1.1); /* हल्का सा ज़ूम इफ़ेक्ट */
+}
+
+/* बटन गायब होने का लॉजिक (जैसा था वैसा ही) */
+.s-next.swiper-button-disabled,
+.s-prev.swiper-button-disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* नीचे वाला बटन */
+.btn-explore-more {
+  background: transparent;
+  border: 2px solid #5a2a3a;
+  border-radius: 50px;
+  color: #5a2a3a;
+  padding: 8px 35px;
+  font-weight: 600;
+  transition:all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+
+  background-color: transparent;
+  color: #5a2a3a;
+  border: 2px solid #5a2a3a;
+  padding: 10px 40px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-explore-more:hover {
+  background: #5a2a3a;
+  color: #fff;
+}
+/* पसंदीदा लेखक सेक्शन का बैकग्राउंड कलर */
+.authors-section {
+  background-color: #fdf7f2 !important; /* यहाँ आप अपना मनपसंद कलर बदल सकते हैं (जैसे हल्का क्रीम या ग्रे) */
+  padding: 60px 0; /* ऊपर और नीचे जगह देने के लिए */
+}
+
+/* लेखकों की गोल फोटो */
+.author-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background: #fff; /* सर्कल के अंदर का कलर सफ़ेद रखा है */
+  margin: 0 auto; /* सेंटर करने के लिए */
+}
+
+.author-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.author-item:hover img {
+  transform: scale(1.1);
+}
+
+.author-name-text {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: #333;
+  margin-top: 15px;
+}
+
+.x-small {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* मोबाइल और डेस्कटॉप के बीच का अंतर */
+@media (max-width: 767px) {
+  .authors-slider {
+    display: flex !important; /* Grid हटाकर Flex किया ताकि Swipe हो */
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 15px;
+    padding: 10px 20px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .authors-slider > div {
+    flex: 0 0 45%; /* मोबाइल पर स्वाइप के लिए कार्ड की चौड़ाई */
+    scroll-snap-align: start;
+  }
+
+  .author-circle {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-nowrap-md {
+    flex-wrap: nowrap !important;
+  }
+  .overflow-auto-md {
+    overflow-x: auto !important;
+  }
+
+  /* डेस्कटॉप पर कार्ड्स के बीच थोडा गैप */
+  .authors-slider > div {
+    padding: 0 10px;
+  }
+}
+
+/* स्क्रॉल बार छुपाना */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+/* फुटर का मुख्य स्टाइल */
+.footer-section {
+  background-color: #f7e7d8; /* Image 2 जैसा हल्का क्रीम बैकग्राउंड */
+  color: #5d3a2e; /* डार्क ब्राउन टेक्स्ट */
+}
+
+/* न्यूज़लैटर बार */
+.newsletter-bar {
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200'); /* बुकशेल्फ बैकग्राउंड */
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.newsletter-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+/* लिंक्स और टाइटल्स */
+.footer-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #5d3a2e;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(93, 58, 46, 0.1);
+  padding-bottom: 5px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #5d3a2e;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #a65d3d;
+}
+
+/* संपर्क फॉर्म */
+.footer-contact-form .form-control {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #dcc6b5;
+  color: #5d3a2e;
+}
+
+.contact-submit-btn {
+  background-color: #8c5a44; /* Image 2 जैसा ब्राउन बटन */
+  color: white;
+  padding: 8px 40px;
+  border-radius: 5px;
+}
+
+.contact-submit-btn:hover {
+  background-color: #5d3a2e;
+  color: white;
+}
+
+/* सोशल आइकन्स */
+.social-icons a {
+  width: 35px;
+  height: 35px;
+  background-color: #8c5a44;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+  background-color: #5d3a2e;
+}
+
+@media (max-width: 767px) {
+  .newsletter-bar {
+    text-align: center;
+  }
+}

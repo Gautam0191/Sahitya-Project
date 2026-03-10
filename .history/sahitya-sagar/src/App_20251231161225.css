@@ -1,0 +1,57 @@
+/* --- 1. FONTS (गूगल फॉन्ट) --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* --- 2. GLOBAL VARIABLES (पूरे प्रोजेक्ट के कलर्स) --- */
+:root {
+  --primary-brown: #643242; /* डार्क महरून */
+  --bg-cream: #fdf5f2;      /* हल्का क्रीम बैकग्राउंड */
+  --border-color: #e8d8c8;  /* बॉर्डर का रंग */
+  --text-dark: #2c1810;     /* टेक्स्ट का रंग */
+}
+
+/* --- 3. BASIC RESET (बुनियादी सेटिंग) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-cream); /* पूरी वेबसाइट का बेस कलर */
+  font-family: "Noto Serif Devanagari", serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden; /* मोबाइल पर एक्स्ट्रा स्पेस रोकने के लिए */
+}
+
+/* --- 4. COMMON UTILITIES --- */
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* हर पेज के बीच में कॉमन स्पेस देने के लिए */
+section {
+  padding: 60px 0;
+}
+
+/* --- 5. BUTTONS (Common Style) --- */
+.btn-custom {
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 2px solid var(--primary-brown);
+  background: transparent;
+  color: var(--primary-brown);
+  transition: 0.3s ease;
+}
+
+.btn-custom:hover {
+  background: var(--primary-brown);
+  color: white;
+}

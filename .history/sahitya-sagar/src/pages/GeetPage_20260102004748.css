@@ -1,0 +1,26 @@
+.border-wine {
+  border-color: #5a2a3a !important;
+}
+
+.geet-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.geet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(90, 42, 58, 0.1) !important;
+}
+
+.geetkar-avatar img {
+  transition: all 0.4s ease;
+}
+
+.geetkar-avatar:hover img {
+  border-color: #d4a373 !important; /* Golden touch on hover */
+  transform: rotate(5deg);
+}
+
+.font-italic {
+  font-style: italic;
+}
