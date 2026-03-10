@@ -1,0 +1,66 @@
+/* --- POETRY PAGE ONLY STYLES --- */
+.main-title-red {
+  color: #5a2a3a;
+  font-weight: bold;
+  font-size: 3.5rem;
+  line-height: 1.5 
+}
+.section-label {
+  font-weight: bold;
+  border-left: 5px solid #b04b39;
+  padding-left: 10px;
+}
+.poet-card-wrapper {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.poet-card-wrapper:hover {
+  transform: translateY(-5px);
+}
+.poet-img-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.poet-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+.collection-bg {
+  background: #e9ecef;
+}
+.poet-name-label {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+/* --- ✅ Responsiveness (मोबाइल के लिए कोड) --- */
+
+@media (max-width: 768px) {
+  .main-title-red {
+    font-size: 2.2rem; /* मोबाइल पर हेडिंग थोड़ी छोटी */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  /* मोबाइल पर अगर कार्ड्स बहुत बड़े दिख रहे हों तो गैप कम करने के लिए */
+  .poet-card-wrapper {
+    margin-bottom: 15px;
+  }
+
+  .collection-label {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

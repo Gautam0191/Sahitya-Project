@@ -1,0 +1,159 @@
+/* ------------------ NAVIGATION BAR STYLES ------------------ */
+
+.navbar-custom {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+  /* नेवबार को ऊपर चिपकाने के लिए */
+  position: fixed !important; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  
+  /* अपडेट: इसे visible रखने के लिए यह सुनिश्चित करना ज़रूरी है */
+  overflow: visible !important; 
+  z-index: 9999 !important; /* इसकी वैल्यू बढ़ाई गई है */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+}
+
+.logo-text {
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  color: var(--primary-brown);
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1.6; /* हिंदी मात्राओं के लिए */
+  display: inline-block;
+}
+
+/* --- मुख्य नेविगेशन लिंक्स --- */
+.nav-link-custom {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+  margin-left: 15px;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 8px;
+  line-height: 1.4;
+  text-decoration: none !important;
+}
+
+.nav-link-custom::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0px;
+  left: 0;
+  background-color: #5d0505;
+  transition: width 0.3s ease;
+}
+
+.nav-link-custom:hover::after {
+  width: 100% !important;
+}
+
+.nav-link-custom:hover {
+  color: #5d0505 !important;
+}
+
+/* --- Bootstrap Container Fix --- */
+.navbar-collapse {
+  overflow: visible !important; 
+}
+
+/* --- ड्रॉपडाउन फिक्स --- */
+.nav-item.dropdown {
+  position: static !important; /* अपडेट: यह ड्रॉपडाउन को नेवबार की चौड़ाई से बाहर निकलने में मदद करेगा */
+}
+
+.dropdown-menu {
+ position: absolute !important;
+  top: 100% !important;
+  left: auto !important;
+  margin-top: 0 !important;
+
+  background-color: #fdf2f0 !important;
+  border: 1px solid #e2d1cd !important;
+  border-radius: 0px !important;
+  padding: 0 !important;
+  min-width: 180px !important;
+
+  /* बदलाव यहाँ है: display हटाकर visibility का उपयोग किया */
+  display: block !important; 
+  visibility: hidden; 
+  opacity: 0;
+  
+  z-index: 100000 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+  
+  /* यह लाइन गायब होते समय भी स्मूथ बनाएगी */
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease !important;
+  transform: translateY(10px); /* थोड़ा नीचे से ऊपर आएगा */
+}
+}
+
+.nav-item.dropdown:hover > .dropdown-menu {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.dropdown-item {
+  color: #2c1810 !important;
+  padding: 10px 15px !important;
+  font-size: 0.95rem;
+  background: transparent !important;
+  border-bottom: 1px solid #f1e4e1;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.dropdown-item:hover {
+  background-color: #f7e8e4 !important;
+  color: #5d0505 !important;
+  font-weight: 600;
+  padding-left: 20px !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* सोशल मीडिया आइकन्स */
+.social-icon {
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+/* सर्च बार */
+.search-container {
+  background-color: var(--light-tan);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  width: 350px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--primary-brown);
+  flex-grow: 1;
+}
+
+.search-icon-btn {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--primary-brown);
+  cursor: pointer;
+}

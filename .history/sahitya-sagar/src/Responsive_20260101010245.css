@@ -1,0 +1,76 @@
+/* ============================================================
+   SAHITYA SAGAR MASTER RESPONSIVE FILE
+   ============================================================ */
+
+/* --- 1. DESKTOP & LARGE SCREENS (min-width: 992px) --- */
+@media (min-width: 992px) {
+  .navbar-nav { margin-right: 20px; }
+  .search-and-icons-wrapper { margin-left: auto; display: flex; align-items: center; }
+  .col-lg-2-4 { width: 20%; flex: 0 0 auto; }
+}
+
+/* --- 2. LAPTOP / TABLET LANDSCAPE --- */
+@media (max-width: 1100px) and (min-width: 992px) {
+  .search-container { width: 200px !important; }
+  .logo-text { font-size: 1.8rem !important; }
+  .nav-link-custom { margin-left: 8px !important; font-size: 0.95rem !important; }
+}
+
+/* --- 3. MOBILE MENU & SIDEBAR (max-width: 991px) --- */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: fixed !important; top: 0; left: 0; width: 80%; max-width: 300px;
+    height: 100vh; background-color: #fff; z-index: 1050;
+    padding: 60px 20px 20px 20px; transform: translateX(-100%);
+    transition: transform 0.3s ease-out; display: block !important; 
+  }
+  .navbar-collapse.show { transform: translateX(0); }
+  .close-sidebar-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.8rem; }
+  .menu-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); z-index: 1040;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease-out;
+  }
+  .menu-overlay.show { opacity: 1; visibility: visible; }
+  
+  /* टॉगलर फिक्स */
+  .navbar-toggler { border: none !important; box-shadow: none !important; outline: none !important; }
+}
+
+/* --- 4. TABLETS & PHONES (max-width: 768px) --- */
+@media (max-width: 768px) {
+  .main-footer { text-align: center; }
+  .footer-title { margin-top: 20px; }
+  .social-icons { justify-content: center !important; }
+
+  /* ✅ स्लाइडर फिक्स: गैप और लॉजिक दोनों के लिए ✅ */
+  .carousel-item { 
+    height: 250px !important; /* मोबाइल पर एक फिक्स ऊंचाई ताकि स्लाइडिंग न बिगड़े */
+    background-color: #fdf6e3;
+    overflow: hidden; 
+  }
+  
+  .carousel-item img { 
+    width: 100% !important;
+    height: 100% !important; 
+    object-fit: contain !important; /* इमेज कटेगी नहीं और डिब्बा खाली नहीं दिखेगा */
+  }
+  
+  .kahani-slider, .authors-slider {
+    display: flex !important; flex-wrap: nowrap !important;
+    overflow-x: auto !important; gap: 15px; padding-bottom: 15px;
+  }
+  .author-circle { width: 100px !important; height: 100px !important; }
+}
+
+/* --- 5. GLOBAL UTILITIES --- */
+@media (min-width: 768px) {
+  .flex-nowrap-md { flex-wrap: nowrap !important; }
+  .overflow-auto-md { overflow-x: auto !important; }
+  .authors-slider > div { padding: 0 10px; }
+}
+
+/* स्क्रॉल बार और टॉगलर फोकस फिक्स */
+.custom-scrollbar::-webkit-scrollbar { display: none; }
+.custom-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.navbar-toggler:focus { box-shadow: none !important; outline: none !important; }

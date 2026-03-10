@@ -1,0 +1,114 @@
+/* ------------------ NAVIGATION BAR STYLES ------------------ */
+
+.navbar-custom {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 5px 0; /* पैडिंग कम की ताकि मेनू पास रहे */
+  position: sticky; 
+  top: 0; 
+  z-index: 1050; 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); 
+}
+
+/* लोगो की मात्रा फिक्स करने के लिए */
+.logo-text {
+  font-family: "Georgia", serif;
+  font-size: 2.2rem;
+  color: var(--primary-brown);
+  font-weight: bold;
+  text-decoration: none !important;
+  line-height: 1.6 !important; /* मात्राओं के लिए ज्यादा जगह */
+  display: inline-block;
+  padding: 5px 0;
+}
+
+/* --- मुख्य नेविगेशन लिंक्स --- */
+.nav-link-custom {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+  margin-left: 15px;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 10px 0 !important; /* क्लिक एरिया बढ़ाया */
+  line-height: 1.4;
+  text-decoration: none !important;
+}
+
+/* अंडरलाइन लॉजिक: डिफ़ॉल्ट रूप से 0 रहेगी */
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  width: 0; /* शुरू में 0 */
+  height: 3px; 
+  bottom: 0;
+  left: 0;
+  background-color: #5d0505;
+  transition: width 0.3s ease;
+}
+
+/* सिर्फ होवर करने पर 100% होगी */
+.nav-link-custom:hover::after {
+  width: 100% !important;
+}
+
+/* अगर किसी लिंक पर active क्लास है तो उसे हटा दें या यहाँ कंट्रोल करें */
+.nav-link-custom.active::after {
+  width: 0; /* इसे भी 0 रखें जब तक यूजर खुद न चाहे */
+}
+
+/* --- ड्रॉपडाउन फिक्स (ताकि नीचे न भागे) --- */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: #fdf2f0 !important;
+  border-radius: 0px !important; 
+  border: 1px solid #e2d1cd !important;
+  padding: 0 !important;
+  min-width: 160px !important; 
+  margin-top: 0 !important; /* नेवबार के बिल्कुल सटा हुआ */
+  display: none; 
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important;
+  top: 100%; /* नेवबार के ठीक नीचे से शुरू होगा */
+  left: 0;
+}
+
+/* होवर करने पर ड्रॉपडाउन दिखना */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block !important;
+}
+
+.dropdown-item {
+  color: #2c1810 !important; 
+  padding: 12px 15px !important;
+  font-size: 0.95rem;
+  background: transparent !important; 
+  border-bottom: 1px solid #f1e4e1; 
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f7e8e4 !important; 
+  color: #5d0505 !important; 
+  padding-left: 20px !important; 
+}
+
+/* ड्रॉपडाउन का तीर (Arrow) */
+.dropdown-toggle::after {
+  display: inline-block !important;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* सर्च बार और आइकन्स */
+.search-container {
+  background-color: var(--light-tan);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  width: 280px;
+  display: flex;
+  align-items: center;
+}

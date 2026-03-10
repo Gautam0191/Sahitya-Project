@@ -1,0 +1,127 @@
+/* मुख्य कंटेनर */
+.author-detail-page {
+  background-color: #fdfbf7;
+  min-height: 100vh;
+}
+
+/* हेडर सेक्शन */
+.author-header {
+  background: linear-gradient(135deg, #5a2a3a 0%, #2c151c 100%);
+  position: relative;
+}
+
+.author-img-large {
+ width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  background: white;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.author-img-large:hover {
+  transform: scale(1.05);
+}
+
+/* व्यक्तिगत जानकारी ग्रिड */
+.info-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+.info-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+/* सेक्शन टाइटल्स */
+.section-title {
+  color: #5a2a3a;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
+  display: inline-block;
+  font-family: "serif";
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #b32d2e;
+}
+
+/* --- SahityaSangrah Style List --- */
+
+.work-category-title {
+  color: #5a2a3a;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.nested-work-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 12px 15px !important;
+  border-bottom: 1px solid #eee !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease !important;
+  text-decoration: none !important; /* किसी भी डिफ़ॉल्ट लिंक स्टाइल को हटाने के लिए */
+}
+
+/* सम (Even) आइटम्स पर हल्का बैकग्राउंड */
+.nested-work-item:nth-child(even) {
+  background-color: #f9f7f2;
+}
+.nested-work-item:hover .work-item-text {
+  color: #b32d2e !important;
+}
+
+.work-item-text {
+  font-size: 1rem !important;
+  color: #333 !important;
+  transition: color 0.3s ease !important;
+  font-weight: 500 !important;
+  pointer-events: none; /* ताकि क्लिक इवेंट पैरेंट (row) पर ही रहे */
+}
+
+/* बुलेट पॉइंट स्टाइल */
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #934848;
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+/* कार्ड्स - कोई बॉर्डर नहीं, कोई शैडो नहीं */
+.bio-card,
+.works-card {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* डिवाइडर हटाना */
+hr {
+  display: none !important;
+}

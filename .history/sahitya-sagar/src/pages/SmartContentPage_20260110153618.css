@@ -1,0 +1,88 @@
+/* मुख्य हेडिंग का स्टाइल */
+.main-title-red {
+  color: #b32d2e; /* आपका सिग्नेचर लाल रंग */
+  font-family: 'serif';
+  letter-spacing: -1px;
+}
+
+/* सब-टाइटल टेक्स्ट */
+.sub-title-text {
+  font-size: 0.95rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* कार्ड का ढांचा - चौकोर और बॉर्डर वाला */
+.square-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 5px; /* इमेज के चारों ओर हल्का सफ़ेद बॉर्डर जैसा लुक */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.square-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  border-color: #b32d2e; /* होवर करने पर लाल बॉर्डर */
+}
+
+/* इमेज बॉक्स - इसे 1:1 के अनुपात में चौकोर रखने के लिए */
+.square-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  overflow: hidden;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* इमेज पूरी जगह घेरेगी बिना स्ट्रेच हुए */
+}
+
+/* 'संग्रह' वाले पहले कार्ड के लिए क्रीम बैकग्राउंड */
+.grey-box {
+  background-color: #e9e4dd !important; /* आपकी कलर पैलेट का क्रीम/ग्रे शेड */
+  color: #5a5a5a;
+}
+
+.grey-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* लेखक का नाम - कार्ड के नीचे */
+.square-name {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  padding-left: 2px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* अगर नाम बहुत लंबा हो तो ... दिखेगा */
+}
+
+/* सेक्शन लेबल (बॉर्डर के साथ) */
+.section-label-box {
+  border-bottom: 2px solid #eeeeee;
+  margin-bottom: 20px;
+}
+
+/* मोबाइल रिस्पॉन्सिवनेस */
+@media (max-width: 576px) {
+  .main-title-red {
+    font-size: 1.8rem;
+  }
+  .square-name {
+    font-size: 0.8rem;
+  }
+}
