@@ -2,7 +2,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const path = require("path"); // ✅ ERROR FIX: path को यहाँ डिफाइन कर दिया है
 require("dotenv").config();
 
 const Author = require("./models/Author");
@@ -13,13 +12,13 @@ const app = express();
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
-
-// ✅ इमेज एक्सेस के लिए सही रास्ता (Fixed Path)
-app.use(express.static(path.join(__dirname, "../fronted/public")));
+// इमेज एक्सेस के लिए
+app.use('/images', express.static(path.join(__dirname, '../fronted/public/images')));
 
 // --- 💡 प्रोफेशनल ऑटो-सिंक फंक्शन (पसंदीदा लेखकों के लिए) ---
 const syncFavorites = async () => {
   try {
+    // आपकी फाइल से मैच की गई IDs: प्रेमचंद(217), शिवानी(224), महादेवी(112), दिनकर(115), सुभद्रा(119), प्रसाद(108), अज्ञेय(101)
     const favoriteIds = [217, 224, 112, 115, 119, 108, 101];
 
     // 1. पहले सबको false करें
@@ -40,7 +39,6 @@ const syncFavorites = async () => {
     console.error("❌ Sync Error:", err);
   }
 };
-
 // 2. डेटाबेस कनेक्शन (MongoDB Connection)
 mongoose
   .connect(process.env.MONGO_URI)
@@ -61,6 +59,7 @@ app.get("/api/content/all/search", async (req, res) => {
     const searchRegex = new RegExp(query, "i");
 
     const [works, authors] = await Promise.all([
+      // 1. रचनाओं (Works) में खोजें
       Content.find({
         $or: [
           { title: { $regex: searchRegex } },
@@ -71,12 +70,13 @@ app.get("/api/content/all/search", async (req, res) => {
         .limit(20)
         .lean(),
 
+      // 2. लेखकों (Authors) में खोजें
       Author.find({
         $or: [
           { name: { $regex: searchRegex } },
-          { nickName: { $regex: searchRegex } },
-          { searchTags: { $regex: searchRegex } },
-          { bio: { $regex: searchRegex } },
+          { nickName: { $regex: searchRegex } }, // ✅ अब 'मुंशी' या 'निराला' भी काम करेगा
+          { searchTags: { $regex: searchRegex } }, // ✅ टैग्स (Munshi, dohe आदि)
+          { bio: { $regex: searchRegex } }, // ✅ बायो के शब्दों से भी खोजेगा
         ],
       })
         .limit(10)
@@ -102,7 +102,9 @@ app.get("/api/content/all/search", async (req, res) => {
 // ⭐ पसंदीदा लेखक लाने का रूट (Home Page के लिए)
 app.get("/api/authors/favorites", async (req, res) => {
   try {
+    // हम isFavorite के साथ-साथ सीधे ID से भी चेक कर लेते हैं ताकि 0 आने की गुंजाइश ही न रहे
     const favoriteIds = [217, 224, 112, 115, 119, 108, 101];
+
     const favorites = await Author.find({
       $or: [{ isFavorite: true }, { id: { $in: favoriteIds } }],
     }).lean();
@@ -123,6 +125,8 @@ app.get("/api/authors/favorites", async (req, res) => {
 app.get("/api/featured-authors-by-type", async (req, res) => {
   try {
     const { category } = req.query;
+    let dbCategory = "";
+
     const map = {
       poetry: "kavi",
       kavita: "kavi",
@@ -136,7 +140,7 @@ app.get("/api/featured-authors-by-type", async (req, res) => {
       sant: "sant",
     };
 
-    const dbCategory = map[category];
+    dbCategory = map[category];
     if (!dbCategory) return res.json([]);
 
     const authors = await Author.find({ category: dbCategory }).limit(11);
@@ -173,17 +177,22 @@ app.get("/api/content/all/:type", async (req, res) => {
 // 🏠 होमपेज स्पेसिफिक रूट्स
 app.get("/api/home/poetry", async (req, res) => {
   try {
+    // 1. पहले वो कविताएँ ढूँढो जो Featured हैं
     let poetry = await Content.find({ type: "poetry", isFeatured: true }).limit(
       10,
     );
-    if (poetry.length === 0)
+
+    // 2. अगर कोई भी Featured नहीं मिली, तो कोई भी 10 कविताएँ ले आओ
+    if (poetry.length === 0) {
       poetry = await Content.find({ type: "poetry" }).limit(10);
+    }
+
     res.json(poetry);
   } catch (err) {
+    console.error("Poetry API Error:", err);
     res.status(500).json({ error: "Error fetch karne mein" });
   }
 });
-
 app.get("/api/home/stories", async (req, res) => {
   try {
     let stories = await Content.find({ type: "story", isFeatured: true }).limit(
@@ -199,13 +208,16 @@ app.get("/api/home/stories", async (req, res) => {
 
 app.get("/api/home/drama", async (req, res) => {
   try {
+    // केवल वही नाटक ढूँढो जो Featured हैं (limit हटा सकते हैं या बढ़ा सकते हैं)
     const drama = await Content.find({ type: "drama", isFeatured: true });
+
+    // सीधा रिस्पॉन्स भेजें, कोई 'if' या 'extraDrama' की ज़रूरत नहीं है
     res.json(drama);
   } catch (err) {
+    console.error("Drama API Error:", err);
     res.status(500).json({ error: "Error fetch karne mein" });
   }
 });
-
 // 📖 सिंगल कंटेंट पेज रूट
 app.get("/api/content/:authorId/:title", async (req, res) => {
   try {

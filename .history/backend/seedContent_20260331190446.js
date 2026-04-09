@@ -137,7 +137,7 @@ const kavyData = [
     title: "प्रियप्रवास",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/hariaudh1.jpg",
     description: "खड़ी बोली का प्रथम महाकाव्य",
   },
   {
@@ -180,8 +180,7 @@ const kavyData = [
     title: "बीजक (साखी, सबद, रमैनी)",
     type: "poetry",
     content: "ऐसी वाणी बोलिए, मन का आपा खोये...",
-   
-    
+    img: "/content/poetry/kabir1.jpg",
     description: "निर्गुण भक्ति के अनमोल दोहे",
   },
   {
@@ -242,7 +241,7 @@ const kavyData = [
     title: "कारवाँ गुजर गया",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/neeraj1.jpg",
     description: "विश्व प्रसिद्ध फिल्मी गीत",
   },
 
@@ -253,7 +252,7 @@ const kavyData = [
     title: "कामायनी",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/kamayani.jpg",
     description: "छायावाद का शिखर ग्रंथ",
   },
   {
@@ -327,7 +326,7 @@ const kavyData = [
     title: "साये में धूप",
     type: "poetry",
     content: "हो गई है पीर पर्वत सी पिघलनी चाहिए...",
-  
+    img: "/content/poetry/dushyant1.jpg",
     description: "क्रांतिकारी गज़ल संग्रह",
   },
   {
@@ -372,7 +371,7 @@ const kavyData = [
     title: "यामा",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-    
+    img: "/content/poetry/yaama.jpg",
     description: "ज्ञानपीठ पुरस्कृत संकलन",
   },
   {
@@ -399,7 +398,7 @@ const kavyData = [
     title: "साकेत",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-    
+    img: "/content/poetry/saket.jpg",
     description: "रामकथा पर आधारित महाकाव्य",
   },
   {
@@ -408,7 +407,7 @@ const kavyData = [
     title: "भारत-भारती",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-    
+    img: "/content/poetry/maithili1.jpg",
     description: "राष्ट्रभक्ति की अमर रचना",
   },
   {
@@ -443,7 +442,7 @@ const kavyData = [
     title: "पदावली",
     type: "poetry",
     content: "मेरे तो गिरधर गोपाल दूसरो न कोई...",
-  
+    img: "/content/poetry/meera1.jpg",
     description: "कृष्ण भक्ति के मधुर पद",
   },
   {
@@ -532,7 +531,7 @@ const kavyData = [
     title: "रहीम सतसई",
     type: "poetry",
     content: "रहिमन धागा प्रेम का, मत तोड़ो चटकाय...",
-    
+    img: "/content/poetry/rahim1.jpg",
     description: "नीतिपरक दोहे",
   },
   {
@@ -575,6 +574,7 @@ const kavyData = [
     title: "सरोज स्मृति",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
+    img: "/content/poetry/nirala1.jpg",
     description: "हिंदी का सर्वश्रेष्ठ शोकगीत",
   },
   {
@@ -629,7 +629,7 @@ const kavyData = [
     title: "चिदंबरा",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/pant1.jpg",
     description: "ज्ञानपीठ पुरस्कृत संकलन",
   },
   {
@@ -648,7 +648,7 @@ const kavyData = [
     title: "सूरसागर",
     type: "poetry",
     content: "पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/surdas1.jpg",
     description: "वात्सल्य रस का अक्षय भंडार",
   },
   {
@@ -685,7 +685,7 @@ const kavyData = [
     title: "क्या भूलूँ क्या याद करूँ",
     type: "story",
     content: "आत्मकथा का पाठ यहाँ आएगा...",
-   
+    img: "/content/story/bachhan_auto.jpg",
     description: "विश्वप्रसिद्ध आत्मकथा",
   },
 
@@ -706,7 +706,7 @@ const kavyData = [
     title: "भारत दुर्दशा",
     type: "drama",
     content: "पाठ यहाँ आएगा...",
-   
+    img: "/content/drama/bhartendu1.jpg",
     description: "प्रसिद्ध नाटक",
   },
 
@@ -744,7 +744,7 @@ const kavyData = [
     title: "गुनाहों का देवता",
     type: "story",
     content: "पाठ यहाँ आएगा...",
-    
+    img: "/content/story/gunaho-ka-devta.jpg",
     description: "अमर प्रेम कहानी (उपन्यास)",
   },
 

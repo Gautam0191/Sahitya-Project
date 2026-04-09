@@ -706,7 +706,7 @@ const kavyData = [
     title: "भारत दुर्दशा",
     type: "drama",
     content: "पाठ यहाँ आएगा...",
-   
+    img: "/content/drama/bhartendu1.jpg",
     description: "प्रसिद्ध नाटक",
   },
 
@@ -744,7 +744,7 @@ const kavyData = [
     title: "गुनाहों का देवता",
     type: "story",
     content: "पाठ यहाँ आएगा...",
-    
+    img: "/content/story/gunaho-ka-devta.jpg",
     description: "अमर प्रेम कहानी (उपन्यास)",
   },
 

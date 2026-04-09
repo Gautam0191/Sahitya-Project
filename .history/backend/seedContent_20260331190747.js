@@ -629,7 +629,7 @@ const kavyData = [
     title: "चिदंबरा",
     type: "poetry",
     content: "मूल पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/pant1.jpg",
     description: "ज्ञानपीठ पुरस्कृत संकलन",
   },
   {
@@ -648,7 +648,7 @@ const kavyData = [
     title: "सूरसागर",
     type: "poetry",
     content: "पाठ यहाँ आएगा...",
-   
+    img: "/content/poetry/surdas1.jpg",
     description: "वात्सल्य रस का अक्षय भंडार",
   },
   {
@@ -685,7 +685,7 @@ const kavyData = [
     title: "क्या भूलूँ क्या याद करूँ",
     type: "story",
     content: "आत्मकथा का पाठ यहाँ आएगा...",
-   
+    img: "/content/story/bachhan_auto.jpg",
     description: "विश्वप्रसिद्ध आत्मकथा",
   },
 
@@ -706,7 +706,7 @@ const kavyData = [
     title: "भारत दुर्दशा",
     type: "drama",
     content: "पाठ यहाँ आएगा...",
-   
+    img: "/content/drama/bhartendu1.jpg",
     description: "प्रसिद्ध नाटक",
   },
 
@@ -744,7 +744,7 @@ const kavyData = [
     title: "गुनाहों का देवता",
     type: "story",
     content: "पाठ यहाँ आएगा...",
-    
+    img: "/content/story/gunaho-ka-devta.jpg",
     description: "अमर प्रेम कहानी (उपन्यास)",
   },
 
