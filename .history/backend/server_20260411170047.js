@@ -2,7 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const path = require("path");
+const path = require("path"); // ✅ ERROR FIX: path को यहाँ डिफाइन कर दिया है
 require("dotenv").config();
 
 const Author = require("./models/Author");
@@ -11,62 +11,72 @@ const Content = require("./models/Content");
 const app = express();
 
 // --- Middleware ---
-// ✅ CORS FIX: इसे लाइव सर्वर के लिए अपडेट किया गया है
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+app.use(cors());
 app.use(express.json());
 
-// ✅ इमेज एक्सेस के लिए रास्ता
-app.use(express.static(path.join(__dirname, "public")));
+// ✅ इमेज एक्सेस के लिए सही रास्ता (Fixed Path)
+app.use(express.static(path.join(__dirname, "../fronted/public")));
 
-// --- 💡 प्रोफेशनल ऑटो-सिंक फंक्शन ---
+// --- 💡 प्रोफेशनल ऑटो-सिंक फंक्शन (पसंदीदा लेखकों के लिए) ---
 const syncFavorites = async () => {
   try {
     const favoriteIds = [217, 224, 112, 115, 119, 108, 101];
+
+    // 1. पहले सबको false करें
     await Author.updateMany({}, { $set: { isFavorite: false } });
+
+    // 2. IDs के आधार पर पसंदीदा लेखकों को true करें
     const result = await Author.updateMany(
       { id: { $in: favoriteIds } },
       { $set: { isFavorite: true } },
     );
+
     console.log(`✅ Favorites Updated in DB: ${result.modifiedCount} authors.`);
+
+    // एक छोटा सा चेक यहीं कर लेते हैं
+    const check = await Author.countDocuments({ isFavorite: true });
+    console.log(`🔍 Immediate DB Verification: Found ${check} favorites.`);
   } catch (err) {
     console.error("❌ Sync Error:", err);
   }
 };
 
+// 2. डेटाबेस कनेक्शन (MongoDB Connection)
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Database connected successfully! 🚀");
+    syncFavorites(); // कनेक्शन के बाद पसंदीदा लेखकों को सिंक करें
+  })
+  .catch((err) => console.log("Database connection error: ", err));
+
 // --- 🛠️ API ROUTES ---
 
-// 🔍 ग्लोबल सर्च रूट (UPDATED)
+// 🔍 ग्लोबल सर्च रूट (स्मार्ट सर्च अपडेटेड)
 app.get("/api/content/all/search", async (req, res) => {
   try {
     const query = req.query.q;
     if (!query) return res.json([]);
+
     const searchRegex = new RegExp(query, "i");
 
     const [works, authors] = await Promise.all([
-      // 1. रचनाओं (Stories/Poems) में सर्च करें
       Content.find({
         $or: [
           { title: { $regex: searchRegex } },
           { authorName: { $regex: searchRegex } },
-          { searchTags: { $regex: searchRegex } }, // ✅ यहाँ पहले से है
+          { searchTags: { $regex: searchRegex } },
         ],
       })
         .limit(20)
         .lean(),
 
-      // 2. लेखकों (Authors) में सर्च करें
       Author.find({
         $or: [
           { name: { $regex: searchRegex } },
           { nickName: { $regex: searchRegex } },
+          { searchTags: { $regex: searchRegex } },
           { bio: { $regex: searchRegex } },
-          { searchTags: { $regex: searchRegex } }, // 🚀 यह लाइन गायब थी, इसे जोड़ दिया है!
         ],
       })
         .limit(10)
@@ -84,11 +94,32 @@ app.get("/api/content/all/search", async (req, res) => {
     ];
     res.json(finalData);
   } catch (err) {
-    console.error("Search Error:", err);
-    res.status(500).json({ error: "Search Failed" });
+    console.error("Search API Error:", err);
+    res.status(500).json({ error: "Mongoose Search Failed" });
   }
 });
-// 📁 स्मार्ट कैटेगरी रूट
+
+// ⭐ पसंदीदा लेखक लाने का रूट (Home Page के लिए)
+app.get("/api/authors/favorites", async (req, res) => {
+  try {
+    const favoriteIds = [217, 224, 112, 115, 119, 108, 101];
+    const favorites = await Author.find({
+      $or: [{ isFavorite: true }, { id: { $in: favoriteIds } }],
+    }).lean();
+
+    console.log(
+      "📡 API Response: Sending",
+      favorites.length,
+      "authors to frontend.",
+    );
+    res.json(favorites);
+  } catch (err) {
+    console.error("API Error:", err);
+    res.status(500).json({ error: "सर्वर एरर" });
+  }
+});
+
+// 📁 स्मार्ट कैटेगरी रूट (SmartContentPage के लिए)
 app.get("/api/featured-authors-by-type", async (req, res) => {
   try {
     const { category } = req.query;
@@ -100,10 +131,14 @@ app.get("/api/featured-authors-by-type", async (req, res) => {
       nibandh: "nibandhkar",
       sher: "shayar",
       shayar: "shayar",
+      shayari: "shayar",
       dohe: "sant",
+      sant: "sant",
     };
+
     const dbCategory = map[category];
     if (!dbCategory) return res.json([]);
+
     const authors = await Author.find({ category: dbCategory }).limit(11);
     res.json(authors);
   } catch (err) {
@@ -111,7 +146,7 @@ app.get("/api/featured-authors-by-type", async (req, res) => {
   }
 });
 
-// 📚 समस्त संग्रह रूट
+// 📚 समस्त संग्रह रूट (Type के आधार पर रचनाएँ)
 app.get("/api/content/all/:type", async (req, res) => {
   try {
     const { type } = req.params;
@@ -122,18 +157,20 @@ app.get("/api/content/all/:type", async (req, res) => {
       story: "story",
       nibandh: "essay",
       sher: "shayari",
+      shayari: "shayari",
       dohe: "doha",
     };
+
     const searchType = mapping[type] || type;
     const works = await Content.find({ type: searchType }).lean();
     works.sort((a, b) => a.title.localeCompare(b.title, "hi"));
     res.json(works);
   } catch (err) {
-    res.status(500).json({ error: "Error fetch" });
+    res.status(500).json({ error: "Data fetch karne mein error" });
   }
 });
 
-// 🏠 होमपेज रूट्स
+// 🏠 होमपेज स्पेसिफिक रूट्स
 app.get("/api/home/poetry", async (req, res) => {
   try {
     let poetry = await Content.find({ type: "poetry", isFeatured: true }).limit(
@@ -143,7 +180,7 @@ app.get("/api/home/poetry", async (req, res) => {
       poetry = await Content.find({ type: "poetry" }).limit(10);
     res.json(poetry);
   } catch (err) {
-    res.status(500).json({ error: "Error" });
+    res.status(500).json({ error: "Error fetch karne mein" });
   }
 });
 
@@ -165,29 +202,30 @@ app.get("/api/home/drama", async (req, res) => {
     const drama = await Content.find({ type: "drama", isFeatured: true });
     res.json(drama);
   } catch (err) {
-    res.status(500).json({ error: "Error" });
+    res.status(500).json({ error: "Error fetch karne mein" });
   }
 });
 
-// 📖 सिंगल कंटेंट पेज
+// 📖 सिंगल कंटेंट पेज रूट
 app.get("/api/content/:authorId/:title", async (req, res) => {
   try {
+    const { authorId, title } = req.params;
     const work = await Content.findOne({
-      authorId: Number(req.params.authorId),
-      title: req.params.title,
+      authorId: Number(authorId),
+      title: title,
     });
-    work ? res.json(work) : res.status(404).json({ message: "Not found" });
+    if (!work) return res.status(404).json({ message: "Not found" });
+    res.json(work);
   } catch (err) {
-    res.status(500).json({ error: "Error" });
+    res.status(500).json({ error: "सर्वर त्रुटि" });
   }
 });
 
-// 👤 लेखक प्रोफाइल रूट्स
+// 👤 लेखक लिस्ट और सिंगल प्रोफाइल रूट
 app.get("/api/authors", async (req, res) => {
   try {
-    const authors = await Author.find(
-      req.query.category ? { category: req.query.category } : {},
-    );
+    const query = req.query.category ? { category: req.query.category } : {};
+    const authors = await Author.find(query);
     res.json(authors);
   } catch (err) {
     res.status(500).json({ error: "Error" });
@@ -197,19 +235,14 @@ app.get("/api/authors", async (req, res) => {
 app.get("/api/authors/:id", async (req, res) => {
   try {
     const author = await Author.findOne({ id: Number(req.params.id) });
-    author ? res.json(author) : res.status(404).json({ message: "Not found" });
+    author
+      ? res.json(author)
+      : res.status(404).json({ message: "लेखक नहीं मिला" });
   } catch (err) {
-    res.status(500).json({ error: "Error" });
+    res.status(500).json({ error: "सर्वर त्रुटि" });
   }
 });
 
-// 🚀 सर्वर स्टार्टअप (Database Connection First)
+// 🚀 सर्वर स्टार्टअप
 const PORT = process.env.PORT || 5000;
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("Database connected successfully! 🚀");
-    syncFavorites();
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => console.log("Database connection error: ", err));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

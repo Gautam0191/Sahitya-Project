@@ -41,38 +41,32 @@ const syncFavorites = async () => {
 
 // --- 🛠️ API ROUTES ---
 
-// 🔍 ग्लोबल सर्च रूट (UPDATED)
+// 🔍 ग्लोबल सर्च रूट
 app.get("/api/content/all/search", async (req, res) => {
   try {
     const query = req.query.q;
     if (!query) return res.json([]);
     const searchRegex = new RegExp(query, "i");
-
     const [works, authors] = await Promise.all([
-      // 1. रचनाओं (Stories/Poems) में सर्च करें
       Content.find({
         $or: [
           { title: { $regex: searchRegex } },
           { authorName: { $regex: searchRegex } },
-          { searchTags: { $regex: searchRegex } }, // ✅ यहाँ पहले से है
+          { searchTags: { $regex: searchRegex } },
         ],
       })
         .limit(20)
         .lean(),
-
-      // 2. लेखकों (Authors) में सर्च करें
       Author.find({
         $or: [
           { name: { $regex: searchRegex } },
           { nickName: { $regex: searchRegex } },
           { bio: { $regex: searchRegex } },
-          { searchTags: { $regex: searchRegex } }, // 🚀 यह लाइन गायब थी, इसे जोड़ दिया है!
         ],
       })
         .limit(10)
         .lean(),
     ]);
-
     const finalData = [
       ...works,
       ...authors.map((a) => ({
@@ -84,10 +78,23 @@ app.get("/api/content/all/search", async (req, res) => {
     ];
     res.json(finalData);
   } catch (err) {
-    console.error("Search Error:", err);
     res.status(500).json({ error: "Search Failed" });
   }
 });
+
+// ⭐ पसंदीदा लेखक रूट
+app.get("/api/authors/favorites", async (req, res) => {
+  try {
+    const favoriteIds = [217, 224, 112, 115, 119, 108, 101];
+    const favorites = await Author.find({
+      $or: [{ isFavorite: true }, { id: { $in: favoriteIds } }],
+    }).lean();
+    res.json(favorites);
+  } catch (err) {
+    res.status(500).json({ error: "सर्वर एरर" });
+  }
+});
+
 // 📁 स्मार्ट कैटेगरी रूट
 app.get("/api/featured-authors-by-type", async (req, res) => {
   try {
