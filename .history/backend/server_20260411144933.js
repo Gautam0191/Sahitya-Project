@@ -12,13 +12,11 @@ const app = express();
 
 // --- Middleware ---
 // ✅ CORS FIX: इसे लाइव सर्वर के लिए अपडेट किया गया है
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 // ✅ इमेज एक्सेस के लिए रास्ता
@@ -54,18 +52,14 @@ app.get("/api/content/all/search", async (req, res) => {
           { authorName: { $regex: searchRegex } },
           { searchTags: { $regex: searchRegex } },
         ],
-      })
-        .limit(20)
-        .lean(),
+      }).limit(20).lean(),
       Author.find({
         $or: [
           { name: { $regex: searchRegex } },
           { nickName: { $regex: searchRegex } },
           { bio: { $regex: searchRegex } },
         ],
-      })
-        .limit(10)
-        .lean(),
+      }).limit(10).lean(),
     ]);
     const finalData = [
       ...works,
@@ -100,14 +94,8 @@ app.get("/api/featured-authors-by-type", async (req, res) => {
   try {
     const { category } = req.query;
     const map = {
-      poetry: "kavi",
-      kavita: "kavi",
-      story: "kahanikar",
-      kahani: "kahanikar",
-      nibandh: "nibandhkar",
-      sher: "shayar",
-      shayar: "shayar",
-      dohe: "sant",
+      poetry: "kavi", kavita: "kavi", story: "kahanikar", kahani: "kahanikar",
+      nibandh: "nibandhkar", sher: "shayar", shayar: "shayar", dohe: "sant",
     };
     const dbCategory = map[category];
     if (!dbCategory) return res.json([]);
@@ -122,15 +110,7 @@ app.get("/api/featured-authors-by-type", async (req, res) => {
 app.get("/api/content/all/:type", async (req, res) => {
   try {
     const { type } = req.params;
-    const mapping = {
-      kavita: "poetry",
-      poetry: "poetry",
-      kahani: "story",
-      story: "story",
-      nibandh: "essay",
-      sher: "shayari",
-      dohe: "doha",
-    };
+    const mapping = { kavita: "poetry", poetry: "poetry", kahani: "story", story: "story", nibandh: "essay", sher: "shayari", dohe: "doha" };
     const searchType = mapping[type] || type;
     const works = await Content.find({ type: searchType }).lean();
     works.sort((a, b) => a.title.localeCompare(b.title, "hi"));
@@ -143,77 +123,53 @@ app.get("/api/content/all/:type", async (req, res) => {
 // 🏠 होमपेज रूट्स
 app.get("/api/home/poetry", async (req, res) => {
   try {
-    let poetry = await Content.find({ type: "poetry", isFeatured: true }).limit(
-      10,
-    );
-    if (poetry.length === 0)
-      poetry = await Content.find({ type: "poetry" }).limit(10);
+    let poetry = await Content.find({ type: "poetry", isFeatured: true }).limit(10);
+    if (poetry.length === 0) poetry = await Content.find({ type: "poetry" }).limit(10);
     res.json(poetry);
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 app.get("/api/home/stories", async (req, res) => {
   try {
-    let stories = await Content.find({ type: "story", isFeatured: true }).limit(
-      7,
-    );
-    if (stories.length === 0)
-      stories = await Content.find({ type: "story" }).limit(7);
+    let stories = await Content.find({ type: "story", isFeatured: true }).limit(7);
+    if (stories.length === 0) stories = await Content.find({ type: "story" }).limit(7);
     res.json(stories);
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 app.get("/api/home/drama", async (req, res) => {
   try {
     const drama = await Content.find({ type: "drama", isFeatured: true });
     res.json(drama);
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 // 📖 सिंगल कंटेंट पेज
 app.get("/api/content/:authorId/:title", async (req, res) => {
   try {
-    const work = await Content.findOne({
-      authorId: Number(req.params.authorId),
-      title: req.params.title,
-    });
+    const work = await Content.findOne({ authorId: Number(req.params.authorId), title: req.params.title });
     work ? res.json(work) : res.status(404).json({ message: "Not found" });
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 // 👤 लेखक प्रोफाइल रूट्स
 app.get("/api/authors", async (req, res) => {
   try {
-    const authors = await Author.find(
-      req.query.category ? { category: req.query.category } : {},
-    );
+    const authors = await Author.find(req.query.category ? { category: req.query.category } : {});
     res.json(authors);
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 app.get("/api/authors/:id", async (req, res) => {
   try {
     const author = await Author.findOne({ id: Number(req.params.id) });
     author ? res.json(author) : res.status(404).json({ message: "Not found" });
-  } catch (err) {
-    res.status(500).json({ error: "Error" });
-  }
+  } catch (err) { res.status(500).json({ error: "Error" }); }
 });
 
 // 🚀 सर्वर स्टार्टअप (Database Connection First)
 const PORT = process.env.PORT || 5000;
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Database connected successfully! 🚀");
     syncFavorites();

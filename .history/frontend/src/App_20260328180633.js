@@ -22,11 +22,7 @@ import SearchPage from "./pages/SearchPage";
 import About from "./pages/About";
 import CategoryPage from "./pages/CategoryPage";
 
-// --- ✅ API कॉन्फ़िगरेशन (Render Backend Link) ---
-// अब आपका फ्रंटएंड इसी लिंक के जरिए बैकएंड से बात करेगा
-const API_URL = "https://sahitya-backend.onrender.com";
-
-// --- ✅ लोकल डेटा ---
+// --- ✅ लोकल डेटा (इमेज पाथ को '/' से शुरू किया गया है ताकि किसी भी पेज पर फोटो दिखे) ---
 const sliderData = [
   { id: 1, img: "/sahity-sagar-heroSection.jpg" },
   { id: 2, img: "/sahity-sagar-heroSection.jpg" },
@@ -69,10 +65,6 @@ function App() {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
-    
-    // बैकएंड को "जगाने" के लिए एक छोटा सा पिंग (Render के फ्री टियर के लिए अच्छा रहता है)
-    fetch(`${API_URL}/`).then(() => console.log("Backend is awake!")).catch(err => console.log("Backend waking up..."));
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -157,7 +149,7 @@ function App() {
               element={
                 <ContentPage
                   type="nibandh"
-                  title="नि निबंध"
+                  title="निबंध"
                   subtitle="साहितियक एवं सामाजिक वैचारिक संग्रह"
                 />
               }

@@ -39,9 +39,7 @@ const SearchPage = () => {
 
       setLoading(true);
       try {
-        // 🚨 पुरानी लिंक (लोकल): http://localhost:5000/api/content/all/search
-        // ✅ नई लाइव लिंक (Render): https://sahitya-backend.onrender.com/api/content/all/search
-        const res = await axios.get(`https://sahitya-backend.onrender.com/api/content/all/search?q=${query}`);
+        const res = await axios.get(`http://localhost:5000/api/content/all/search?q=${query}`);
         setAllResults(res.data);
       } catch (err) {
         console.error("सर्च एरर:", err);
