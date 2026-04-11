@@ -29,7 +29,7 @@ const Home = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [poetryRes, storyRes, dramaRes, favRes] = await Promise.all([
+        onst [poetryRes, storyRes, dramaRes, favRes] = await Promise.all([
           axios.get("https://sahitya-backend.onrender.com/api/home/poetry"),
           axios.get("https://sahitya-backend.onrender.com/api/home/stories"),
           axios.get("https://sahitya-backend.onrender.com/api/home/drama"),

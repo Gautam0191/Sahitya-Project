@@ -46,8 +46,8 @@ const SahityaSangrah = () => {
 
         console.log("Fetching from DB for type:", searchType); // चेक करने के लिए
 
-       const res = await axios.get(
-          `https://sahitya-backend.onrender.com/api/content/all/${searchType}`
+        const res = await axios.get(
+          `http://localhost:5000/api/content/all/${searchType}`,
         );
         setListData(res.data);
       } catch (err) {

@@ -12,8 +12,7 @@ const ReadingPage = () => {
     window.scrollTo(0, 0);
     const fetchContent = async () => {
       try {
-        // ✅ Localhost हटाकर Render की लाइव लिंक लगाई गई है
-        const res = await axios.get(`https://sahitya-backend.onrender.com/api/content/${authorId}/${workTitle}`);
+        const res = await axios.get(`http://localhost:5000/api/content/${authorId}/${workTitle}`);
         setWorkData(res.data);
       } catch (err) {
         console.error("Error fetching work:", err);
@@ -36,26 +35,30 @@ const ReadingPage = () => {
                 ← पीछे जाएँ
               </button>
               
+              {/* शीर्षक */}
               <h1 className="display-5 text-center mb-2" style={{ fontFamily: 'serif' }}>
                 {workData ? workData.title : workTitle}
               </h1>
               
               <hr className="w-25 mx-auto mb-5" style={{ borderTop: "2px solid #8b4513" }} />
               
+              {/* ✅ रचना की कवर इमेज - यहाँ पाथ फिक्स किया गया है */}
               {workData?.img && (
                 <div className="mb-5 text-center">
                    <img 
+                    /* /covers/ फोल्डर का सही पाथ */
                     src={`/covers/${workData.img.trim()}`} 
                     alt={workData.title} 
                     style={{ maxWidth: "100%", maxHeight: "400px", borderRadius: "8px", boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }} 
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.style.display = 'none'; 
+                      e.target.style.display = 'none'; // अगर फोटो न मिले तो खाली जगह न दिखे
                     }}
                    />
                 </div>
               )}
 
+              {/* रचना का पाठ (Content) */}
               <div className="reading-content lh-lg" style={{ fontSize: "1.2rem", textAlign: "justify", whiteSpace: "pre-wrap" }}>
                 {workData?.content ? (
                   workData.content

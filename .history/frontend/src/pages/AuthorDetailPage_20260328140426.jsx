@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useParams, Link, useNavigate } from "react-router-dom"; // यहाँ useNavigate जोड़ा
+import axios from "axios"; // 1. Axios को बुलाया
 import "./AuthorDetailPage.css";
 
 const AuthorDetailPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // यह URL से 'id' उठाएगा
   const navigate = useNavigate();
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,8 +14,8 @@ const AuthorDetailPage = () => {
 
     const fetchAuthorDetail = async () => {
       try {
-        // ✅ Localhost हटाकर Render की लाइव लिंक डाल दी है
-        const response = await axios.get("https://sahitya-backend.onrender.com/api/authors");
+        // 2. हम सभी लेखकों में से उस खास ID वाले को फिल्टर करेंगे
+        const response = await axios.get("http://localhost:5000/api/authors");
         const foundAuthor = response.data.find(
           (a) => String(a.id) === String(id)
         );
@@ -53,12 +53,16 @@ const AuthorDetailPage = () => {
 
   return (
     <div className="author-detail-page">
+      {/* Header Section */}
       <div className="author-header py-5">
         <div className="container text-center text-white">
           <div className="author-img-large mb-4 mx-auto shadow-lg">
             <img src={author.img} alt={author.name} />
           </div>
-          <h1 className="fw-bold mb-2 display-5" style={{ fontFamily: "serif" }}>
+          <h1
+            className="fw-bold mb-2 display-5"
+            style={{ fontFamily: "serif" }}
+          >
             {author.name}
           </h1>
           <span className="badge rounded-pill bg-light text-dark px-4 py-2 mb-4 shadow-sm">
@@ -88,46 +92,65 @@ const AuthorDetailPage = () => {
 
       <div className="container py-5">
         <div className="row g-5">
+          {/* Biography */}
           <div className="col-lg-7">
             <div className="bio-card p-4 p-md-5 bg-white shadow-sm rounded-4 h-100">
               <h3 className="section-title mb-4">संपूर्ण जीवन परिचय</h3>
-              <p className="author-bio-text text-secondary lh-lg fs-5" style={{ textAlign: "justify" }}>
+              <p
+                className="author-bio-text text-secondary lh-lg fs-5"
+                style={{ textAlign: "justify" }}
+              >
                 {author.longBio || author.bio || "जानकारी जल्द उपलब्ध होगी।"}
               </p>
             </div>
           </div>
 
+          {/* Works */}
           <div className="col-lg-5">
             <div className="works-card p-4 p-md-5 bg-white shadow-sm rounded-4 h-100 border-start border-5 border-wine">
               <h3 className="section-title mb-4">प्रमुख रचनाएँ</h3>
-              {author.structuredWorks && Object.keys(author.structuredWorks).length > 0 ? (
-                Object.entries(author.structuredWorks).map(([catName, items]) => (
-                  <div key={catName} className="mb-4">
-                    <p className="work-category-title text-uppercase mb-2">{catName}</p>
-                    <div className="ps-2">
-                      {items.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="nested-work-item mb-2"
-                          onClick={() => navigate(`/read/${author.id}/${item}`)}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <span className="bullet-dot"></span>
-                          <span className="work-item-text">{item}</span>
-                        </div>
-                      ))}
+
+              {author.structuredWorks &&
+              Object.keys(author.structuredWorks).length > 0 ? (
+                Object.entries(author.structuredWorks).map(
+                  ([catName, items]) => (
+                    <div key={catName} className="mb-4">
+                      <p className="work-category-title text-uppercase mb-2">
+                        {catName}
+                      </p>
+                      <div className="ps-2">
+                        {items.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="nested-work-item mb-2"
+                            // ✅ बटन जैसा काम करने के लिए onClick लगाया
+                            onClick={() =>
+                              navigate(`/read/${author.id}/${item}`)
+                            }
+                            style={{ cursor: "pointer" }}
+                          >
+                            <span className="bullet-dot"></span>
+                            <span className="work-item-text">{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))
+                  )
+                )
               ) : (
-                <div className="text-muted italic">रचनाओं की सूची जल्द ही अपडेट की जाएगी।</div>
+                <div className="text-muted italic">
+                  रचनाओं की सूची जल्द ही अपडेट की जाएगी।
+                </div>
               )}
             </div>
           </div>
         </div>
 
         <div className="text-center mt-5">
-          <Link to="/" className="btn btn-outline-dark px-5 py-2 rounded-pill shadow-sm">
+          <Link
+            to="/"
+            className="btn btn-outline-dark px-5 py-2 rounded-pill shadow-sm"
+          >
             ← होमपेज पर वापस जाएँ
           </Link>
         </div>

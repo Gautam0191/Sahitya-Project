@@ -13,9 +13,8 @@ const AuthorsListPage = ({ title, subtitle, categoryFilter }) => {
 
     const fetchAuthors = async () => {
       try {
-        // ✅ Localhost को हटाकर Render API का इस्तेमाल किया है
         const response = await axios.get(
-          `https://sahitya-backend.onrender.com/api/authors?category=${categoryFilter}`
+          `http://localhost:5000/api/authors?category=${categoryFilter}`
         );
         
         if (categoryFilter) {
