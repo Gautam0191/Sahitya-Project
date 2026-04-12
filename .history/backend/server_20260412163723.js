@@ -193,15 +193,7 @@ app.get("/api/authors", async (req, res) => {
     res.status(500).json({ error: "Error" });
   }
 });
-app.get("/api/authors/favorites", async (req, res) => {
-  try {
-    const favorites = await Author.find({ isFavorite: true });
-    res.json(favorites || []); // अगर कोई न मिले तो खाली लिस्ट भेजें, एरर नहीं
-  } catch (err) {
-    console.error("Favorites Route Error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+
 app.get("/api/authors/:id", async (req, res) => {
   try {
     const author = await Author.findOne({ id: Number(req.params.id) });
