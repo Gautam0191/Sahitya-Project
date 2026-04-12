@@ -5,7 +5,6 @@ const AuthorSchema = new mongoose.Schema(
     id: { type: Number, unique: true }, // आपका पुराना ID (जैसे 101, 202)
     name: { type: String, required: true },
     category: { type: String, required: true }, // kavi, kahanikar,
-    category: { type: String, required: true },
     categoryLabel: String,
     img: String,
     birthDate: String,
@@ -14,6 +13,8 @@ const AuthorSchema = new mongoose.Schema(
     nickName: String,
     bio: String,
     longBio: String,
+    searchTags: { type: String, default: "" },
+    isFavorite: { type: Boolean, default: false },
 
     structuredWorks: {
       type: Map,

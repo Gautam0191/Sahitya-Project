@@ -14,6 +14,7 @@ const AuthorSchema = new mongoose.Schema(
     bio: String,
     longBio: String,
     searchTags: { type: String, default: "" },
+    isFavorite: { type: Boolean, default: false },
 
     structuredWorks: {
       type: Map,
