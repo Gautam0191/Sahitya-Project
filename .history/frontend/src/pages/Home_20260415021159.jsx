@@ -162,11 +162,10 @@ const Home = ({
 
       {/* --- 2. कविता सेक्शन --- */}
       <section className="poetry-section container mt-5 pb-5">
-        <div className="section-header text-center mb-5">
-  <h2 className="display-5 fw-bold section-heading">काव्य कोश</h2>
-  <p className="text-muted">हिंदी साहित्य की चुनिंदा रचनाएं</p>
-  <div className="title-underline mx-auto"></div>
-</div>
+        <div className="text-center mb-5">
+          <h2 className="section-heading">काव्यकोश</h2>
+          <p className="section-subheading">हिंदी साहित्य की चुनिंदा रचनाएं</p>
+        </div>
 
         <div className="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5 justify-content-center">
           {dbPoetry
@@ -529,82 +528,80 @@ const Home = ({
           </div>
         </div>
       </section>
-      {/* --- 6. पसंदीदा लेखक (Optimized for Mobile & Tablet) --- */}
-<section className="authors-section py-5">
-  <div className="container px-md-5 px-3">
-    {/* हेडिंग और सब-हेडिंग */}
-    <div className="text-center mb-5">
-      <h2
-        className="display-6 fw-bold section-heading" // 'section-title' की जगह 'section-heading' ताकि फालतू लाइन न आए
-        style={{ color: "#5a2a3a" }}
-      >
-        पसंदीदा लेखक
-      </h2>
-      <p className="text-muted small w-100 text-center">
-        साहित्य जगत के कालजयी रचनाकार
-      </p>
-      <div className="title-underline mx-auto"></div>
-    </div>
-
-    <div className="slider-wrapper position-relative">
-      <div
-        className="d-flex flex-nowrap overflow-auto authors-slider pb-4 custom-scrollbar mx-0"
-        ref={authorScrollRef}
-        onScroll={handleAuthorScroll}
-        style={{ scrollBehavior: "smooth", gap: "15px" }} // गैप को यहाँ से कंट्रोल किया है
-      >
-        {favoriteAuthors &&
-          favoriteAuthors.map((author) => (
-            /* सुधार: मोबाइल पर col-5 (2 कार्ड्स), टैबलेट पर col-md-3 (4 कार्ड्स) */
-            <div
-              className="col-5 col-sm-4 col-md-3 col-lg-2-4 flex-shrink-0 author-card-wrapper"
-              key={author._id || author.id}
+      {/* --- 6. पसंदीदा लेखक (Updated) --- */}
+      <section className="authors-section py-5">
+        <div className="container">
+          {/* हेडिंग और सब-हेडिंग को सेंटर करने के लिए */}
+          <div className="text-center mb-5">
+            <h2
+              className="display-6 fw-bold section-title"
+              style={{ color: "#5a2a3a" }}
             >
-              <Link
-                to={`/author/${author.id}`}
-                className="text-decoration-none"
-              >
-                <div className="author-item text-center">
-                  <div className="author-circle shadow-sm mx-auto mb-3">
-                    <img
-                      src={author.img}
-                      alt={author.name}
-                      className="img-fluid"
-                      style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                    />
-                  </div>
-                  <h6 className="author-name-text mb-1 text-dark fw-bold">
-                    {author.name}
-                  </h6>
-                  <p className="text-muted small mb-0">
-                    {author.categoryLabel}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-      </div>
+              पसंदीदा लेखक
+            </h2>
+            <p className="text-muted small w-100 text-center">
+              साहित्य जगत के कालजयी रचनाकार
+            </p>
+            <div className="title-underline mx-auto"></div>
+          </div>
 
-      {/* नेविगेशन बटन्स - केवल डेस्कटॉप/टैबलेट पर दिखेंगे */}
-      {showPrevAuthor && (
-        <button
-          className="s-prev d-none d-md-flex"
-          onClick={() => scrollAuthor("left")}
-        >
-          <i className="fa-solid fa-chevron-left"></i>
-        </button>
-      )}
-      {showNextAuthor && (
-        <button
-          className="s-next d-none d-md-flex"
-          onClick={() => scrollAuthor("right")}
-        >
-          <i className="fa-solid fa-chevron-right"></i>
-        </button>
-      )}
-    </div>
-  </div>
-</section>
+          <div className="slider-wrapper position-relative">
+            <div
+              className="d-flex flex-nowrap overflow-auto authors-slider pb-4 custom-scrollbar"
+              ref={authorScrollRef}
+              onScroll={handleAuthorScroll}
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {favoriteAuthors &&
+                favoriteAuthors.map((author) => (
+                  /* col-lg-2-4 का मतलब है 100/5 = 20% विड्थ, जिससे 5 लेखक दिखेंगे */
+                  <div
+                    className="col-10 col-sm-6 col-md-4 col-lg-2-4 flex-shrink-0 author-card-wrapper"
+                    key={author._id || author.id}
+                  >
+                    <Link
+                      to={`/author/${author.id}`}
+                      className="text-decoration-none"
+                    >
+                      <div className="author-item text-center">
+                        <div className="author-circle shadow-sm mx-auto mb-3">
+                          <img
+                            src={author.img}
+                            alt={author.name}
+                            className="img-fluid"
+                          />
+                        </div>
+                        <h6 className="author-name-text mb-1 text-dark">
+                          {author.name}
+                        </h6>
+                        <p className="text-muted small mb-0">
+                          {author.categoryLabel}
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+            </div>
+
+            {showPrevAuthor && (
+              <button
+                className="s-prev d-none d-md-flex"
+                onClick={() => scrollAuthor("left")}
+              >
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+            )}
+            {showNextAuthor && (
+              <button
+                className="s-next d-none d-md-flex"
+                onClick={() => scrollAuthor("right")}
+              >
+                <i className="fa-solid fa-chevron-right"></i>
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

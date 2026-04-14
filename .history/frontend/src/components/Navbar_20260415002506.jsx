@@ -81,40 +81,26 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, isMobile }) => {
 
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link nav-link-custom" to="/poems">
-                  कविता
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/poems">कविता</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link nav-link-custom" to="/stories">
-                  कहानी
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/stories">कहानी</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link nav-link-custom" to="/Kavi">
-                  कवि
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/Kavi">कवि</Link>
               </li>
 
               <li className="nav-item d-lg-none">
-                <Link className="nav-link nav-link-custom" to="/kahanikar">
-                  कहानीकार
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/kahanikar">कहानीकार</Link>
               </li>
               <li className="nav-item d-lg-none">
-                <Link className="nav-link nav-link-custom" to="/nibandh">
-                  निबंध
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/nibandh">निबंध</Link>
               </li>
               <li className="nav-item d-lg-none">
-                <Link className="nav-link nav-link-custom" to="/dohe">
-                  दोहे
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/dohe">दोहे</Link>
               </li>
               <li className="nav-item d-lg-none">
-                <Link className="nav-link nav-link-custom" to="/sher">
-                  शेर
-                </Link>
+                <Link className="nav-link nav-link-custom" to="/sher">शेर</Link>
               </li>
 
               <li className="nav-item dropdown d-none d-lg-block">
@@ -128,26 +114,10 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, isMobile }) => {
                   अन्य
                 </a>
                 <ul className="dropdown-menu border-0 shadow">
-                  <li>
-                    <Link className="dropdown-item" to="/nibandh">
-                      निबंध
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/sher">
-                      शेर
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/dohe">
-                      दोहे
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/kahanikar">
-                      कहानीकार
-                    </Link>
-                  </li>
+                  <li><Link className="dropdown-item" to="/nibandh">निबंध</Link></li>
+                  <li><Link className="dropdown-item" to="/sher">शेर</Link></li>
+                  <li><Link className="dropdown-item" to="/dohe">दोहे</Link></li>
+                  <li><Link className="dropdown-item" to="/kahanikar">कहानीकार</Link></li>
                 </ul>
               </li>
             </ul>
@@ -155,11 +125,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, isMobile }) => {
             {/* मोबाइल सर्च बार (सिर्फ छोटे फोन पर दिखेगा) */}
             <div className="mobile-search-container d-md-none mt-3">
               <div className="mobile-search-box">
-                <i
-                  className="fas fa-search"
-                  style={{ color: "#5a2a3a" }}
-                  onClick={handleSearch}
-                ></i>
+                <i className="fas fa-search" style={{ color: "#5a2a3a" }} onClick={handleSearch}></i>
                 <input
                   type="text"
                   placeholder="खोजिए"
@@ -186,19 +152,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, isMobile }) => {
                 <i className="fas fa-search"></i>
               </button>
             </div>
-            <a href="#" className="nav-link nav-link-custom me-3">
-              लॉग-इन
-            </a>
+            <a href="#" className="nav-link nav-link-custom me-3">लॉग-इन</a>
             <div className="d-flex align-items-center">
-              <a href="#" className="social-icon">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-facebook"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-youtube"></i>
-              </a>
+              <a href="#" className="social-icon"><i className="fab fa-instagram"></i></a>
+              <a href="#" className="social-icon"><i className="fab fa-facebook"></i></a>
+              <a href="#" className="social-icon"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>

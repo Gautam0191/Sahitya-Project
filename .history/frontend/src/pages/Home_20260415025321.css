@@ -453,10 +453,9 @@
 }
 
 @media (min-width: 992px) {
-  .kavita-card-wrapper {
-    flex: 0 0 20% !important; 
+  .kavita-section .col-lg-2-4 {
+    flex: 0 0 20% !important; /* स्क्रीन पर 5 कार्ड फिक्स */
     max-width: 20% !important;
-    padding: 0 10px;
   }
 }
 

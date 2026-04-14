@@ -97,76 +97,118 @@ const Home = ({
 
   return (
     <>
-     {/* --- 1. HERO SLIDER --- */}
-{/* --- 1. HERO SLIDER --- */}
-<div
-  id="heroCarousel"
-  className="carousel slide carousel-fade"
-  data-bs-ride="carousel"
-  data-bs-interval="3000"
->
-  <div className="carousel-inner">
-    {/* 1. जानकारी बैनर */}
-    <div className="carousel-item active">
-      <img
-        src="/covers/sahity-sagar-heroSection.jpg"
-        className="d-block w-100"
-        alt="साहित्य सागर"
-      />
-    </div>
+      {/* --- 1. HERO SLIDER --- */}
 
-    {/* 2. कविता बैनर */}
-    <div className="carousel-item">
-      <img
-        src="/covers/poem-baner.jpg" 
-        className="d-block w-100"
-        alt="काव्य कुंज"
-      />
-    </div>
+      <div
+        id="heroCarousel"
+        className="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval="3000"
+      >
+        {/* पहले इमेज आएगी */}
+        <div className="carousel-inner">
+          {/* बैनर 1 (Dynamic) */}
+          {sliderData && sliderData.length > 0 && (
+            <div className="carousel-item active">
+              <img
+                src={sliderData[0].img}
+                className="d-block w-100"
+                alt="बैनर 1"
+                style={{ height: isMobile ? "220px" : "450px" }}
+              />
+            </div>
+          )}
 
-    {/* 3. कहानी बैनर */}
-    <div className="carousel-item">
-      <img
-        src="/covers/storybaner.jpg" 
-        className="d-block w-100"
-        alt="कहानियाँ"
-      />
-    </div>
+          {/* बैनर 2, 3, 4 (Static) */}
+          <div className="carousel-item">
+            <img
+              src="/path-to-image2.jpg"
+              className="d-block w-100"
+              alt="बैनर 2"
+              style={{ height: isMobile ? "220px" : "450px" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="/path-to-image3.jpg"
+              className="d-block w-100"
+              alt="बैनर 3"
+              style={{ height: isMobile ? "220px" : "450px" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="/path-to-image4.jpg"
+              className="d-block w-100"
+              alt="बैनर 4"
+              style={{ height: isMobile ? "220px" : "450px" }}
+            />
+          </div>
+        </div>
 
-    {/* 4. शेर-ओ-शायरी बैनर */}
-    <div className="carousel-item">
-      <img
-        src="/covers/shero-sayari.jpg" 
-        className="d-block w-100"
-        alt="शेर-ओ-शायरी"
-      />
-    </div>
-  </div>
+        {/* ✅ इंडिकेटर्स अब नीचे आएंगे क्योंकि ये इमेज के बाद लिखे हैं */}
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+        </div>
 
-  {/* इंडिकेटर्स (Dots) */}
-  <div className="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
-  </div>
-
-  {/* साइड कंट्रोल - यहाँ अब सर्कल होवर इफेक्ट दिखेगा */}
-  <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon"></span>
-  </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span className="carousel-control-next-icon"></span>
-  </button>
-</div>
+        {/* साइड एरो */}
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
 
       {/* --- 2. कविता सेक्शन --- */}
       <section className="poetry-section container mt-5 pb-5">
-        <div className="section-header text-center mb-5">
-  <h2 className="display-5 fw-bold section-heading">काव्य कोश</h2>
-  <p className="text-muted">हिंदी साहित्य की चुनिंदा रचनाएं</p>
-  <div className="title-underline mx-auto"></div>
-</div>
+        <div className="text-center mb-5">
+          <h2 className="section-heading">कविताओं</h2>
+          <p className="section-subheading">हिंदी साहित्य की चुनिंदा रचनाएं</p>
+        </div>
 
         <div className="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5 justify-content-center">
           {dbPoetry
@@ -529,82 +571,80 @@ const Home = ({
           </div>
         </div>
       </section>
-      {/* --- 6. पसंदीदा लेखक (Optimized for Mobile & Tablet) --- */}
-<section className="authors-section py-5">
-  <div className="container px-md-5 px-3">
-    {/* हेडिंग और सब-हेडिंग */}
-    <div className="text-center mb-5">
-      <h2
-        className="display-6 fw-bold section-heading" // 'section-title' की जगह 'section-heading' ताकि फालतू लाइन न आए
-        style={{ color: "#5a2a3a" }}
-      >
-        पसंदीदा लेखक
-      </h2>
-      <p className="text-muted small w-100 text-center">
-        साहित्य जगत के कालजयी रचनाकार
-      </p>
-      <div className="title-underline mx-auto"></div>
-    </div>
-
-    <div className="slider-wrapper position-relative">
-      <div
-        className="d-flex flex-nowrap overflow-auto authors-slider pb-4 custom-scrollbar mx-0"
-        ref={authorScrollRef}
-        onScroll={handleAuthorScroll}
-        style={{ scrollBehavior: "smooth", gap: "15px" }} // गैप को यहाँ से कंट्रोल किया है
-      >
-        {favoriteAuthors &&
-          favoriteAuthors.map((author) => (
-            /* सुधार: मोबाइल पर col-5 (2 कार्ड्स), टैबलेट पर col-md-3 (4 कार्ड्स) */
-            <div
-              className="col-5 col-sm-4 col-md-3 col-lg-2-4 flex-shrink-0 author-card-wrapper"
-              key={author._id || author.id}
+      {/* --- 6. पसंदीदा लेखक (Updated) --- */}
+      <section className="authors-section py-5">
+        <div className="container">
+          {/* हेडिंग और सब-हेडिंग को सेंटर करने के लिए */}
+          <div className="text-center mb-5">
+            <h2
+              className="display-6 fw-bold section-title"
+              style={{ color: "#5a2a3a" }}
             >
-              <Link
-                to={`/author/${author.id}`}
-                className="text-decoration-none"
-              >
-                <div className="author-item text-center">
-                  <div className="author-circle shadow-sm mx-auto mb-3">
-                    <img
-                      src={author.img}
-                      alt={author.name}
-                      className="img-fluid"
-                      style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                    />
-                  </div>
-                  <h6 className="author-name-text mb-1 text-dark fw-bold">
-                    {author.name}
-                  </h6>
-                  <p className="text-muted small mb-0">
-                    {author.categoryLabel}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-      </div>
+              पसंदीदा लेखक
+            </h2>
+            <p className="text-muted small w-100 text-center">
+              साहित्य जगत के कालजयी रचनाकार
+            </p>
+            <div className="title-underline mx-auto"></div>
+          </div>
 
-      {/* नेविगेशन बटन्स - केवल डेस्कटॉप/टैबलेट पर दिखेंगे */}
-      {showPrevAuthor && (
-        <button
-          className="s-prev d-none d-md-flex"
-          onClick={() => scrollAuthor("left")}
-        >
-          <i className="fa-solid fa-chevron-left"></i>
-        </button>
-      )}
-      {showNextAuthor && (
-        <button
-          className="s-next d-none d-md-flex"
-          onClick={() => scrollAuthor("right")}
-        >
-          <i className="fa-solid fa-chevron-right"></i>
-        </button>
-      )}
-    </div>
-  </div>
-</section>
+          <div className="slider-wrapper position-relative">
+            <div
+              className="d-flex flex-nowrap overflow-auto authors-slider pb-4 custom-scrollbar"
+              ref={authorScrollRef}
+              onScroll={handleAuthorScroll}
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {favoriteAuthors &&
+                favoriteAuthors.map((author) => (
+                  /* col-lg-2-4 का मतलब है 100/5 = 20% विड्थ, जिससे 5 लेखक दिखेंगे */
+                  <div
+                    className="col-10 col-sm-6 col-md-4 col-lg-2-4 flex-shrink-0 author-card-wrapper"
+                    key={author._id || author.id}
+                  >
+                    <Link
+                      to={`/author/${author.id}`}
+                      className="text-decoration-none"
+                    >
+                      <div className="author-item text-center">
+                        <div className="author-circle shadow-sm mx-auto mb-3">
+                          <img
+                            src={author.img}
+                            alt={author.name}
+                            className="img-fluid"
+                          />
+                        </div>
+                        <h6 className="author-name-text mb-1 text-dark">
+                          {author.name}
+                        </h6>
+                        <p className="text-muted small mb-0">
+                          {author.categoryLabel}
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+            </div>
+
+            {showPrevAuthor && (
+              <button
+                className="s-prev d-none d-md-flex"
+                onClick={() => scrollAuthor("left")}
+              >
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+            )}
+            {showNextAuthor && (
+              <button
+                className="s-next d-none d-md-flex"
+                onClick={() => scrollAuthor("right")}
+              >
+                <i className="fa-solid fa-chevron-right"></i>
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

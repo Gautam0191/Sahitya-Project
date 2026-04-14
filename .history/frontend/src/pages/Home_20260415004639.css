@@ -1,107 +1,86 @@
-/* ------------------ CAROUSEL STYLES (FINAL REFINED) ------------------ */
+/* ------------------ CAROUSEL STYLES (REFINED) ------------------ */
 
 /* --- कैरोसेल (स्लाइडर) आइटम - Adaptive Height Logic --- */
 .carousel-item {
-    width: 100%;
-    /* इमेज के पीछे का बैकग्राउंड कलर (आपकी इमेज के डार्क टोन से मैच करता हुआ) */
-    background-color: #0b1118; 
-    height: auto !important; 
-    overflow: hidden;
+  /* फिक्स्ड हाइट हटा दी ताकि इमेज रेशियो के हिसाब से खुद हाइट ले */
+  height: auto !important; 
+  overflow: visible !important;
+  background-color: #fdf6e3;
+  position: relative;
 }
 
 .carousel-item img {
-    width: 100%;
-    height: auto !important;
-    /* 2000x800 के लिए 2.5/1 का परफेक्ट रेशियो */
-    aspect-ratio: 2.5 / 1 !important; 
-    /* 'contain' यह सुनिश्चित करता है कि इमेज का कोई भी हिस्सा (नीचे का टेक्स्ट) न कटे */
-    object-fit: contain !important; 
-    object-position: center center;
+  width: 100%;
+  height: auto !important;
+  /* यह रेशियो लैपटॉप पर इमेज को कटने से बचाएगा */
+  aspect-ratio: 16 / 7; 
+  object-fit: cover !important;
+  /* टॉप से दिखाना शुरू करेगा ताकि टेक्स्ट न कटे */
+  object-position: center top; 
 }
 
-/* 📱 मोबाइल (600px से नीचे) */
+/* 📱 मोबाइल के लिए (600px से नीचे) */
 @media (max-width: 600px) {
-    .carousel-item img {
-        /* मोबाइल पर इमेज को थोड़ा ऊँचा (16:9) दिखाएंगे ताकि वह बहुत पतली न लगे */
-        aspect-ratio: 16 / 9 !important; 
-        object-fit: cover !important; 
-    }
+  .carousel-item img {
+    aspect-ratio: 16 / 9; /* मोबाइल पर थोड़ा ज्यादा एरिया कवर करेगा */
+    height: 250px !important; /* मोबाइल पर ग्रिप के लिए फिक्स हाइट */
+  }
 }
 
-/* 📑 टैबलेट (768px से 1024px) */
+/* 📑 टैबलेट के लिए (768px से 1024px) - यहाँ हाइट ऑटोमेटिक बढ़ेगी */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .carousel-item img {
-        aspect-ratio: 2 / 1 !important; 
-    }
+  .carousel-item img {
+    aspect-ratio: 16 / 8; /* टैबलेट स्क्रीन के हिसाब से बैलेंस */
+    height: auto !important;
+  }
 }
 
-/* 💻 लैपटॉप/बड़ी स्क्रीन */
+/* 💻 लैपटॉप के लिए */
 @media (min-width: 1025px) {
-    .carousel-item img {
-        /* हमने 500px की लिमिट हटाकर 750px कर दी है ताकि पूरी इमेज समा सके */
-        max-height: 750px; 
-    }
-}
-
-/* --- ✅ NEXT/PREV BUTTONS (Circle Hover Effect) ✅ --- */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 8%; 
-    opacity: 1; 
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(255, 255, 255, 0.1); /* हल्का सफेद बैकग्राउंड */
-    padding: 25px;
-    border-radius: 50%; 
-    background-size: 50%;
-    transition: all 0.3s ease;
-    filter: invert(1); /* आइकॉन्स को साफ दिखाने के लिए */
-}
-
-/* जब बटन पर माउस (Hover) जाएगा */
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
-    background-color: #5a2a3a !important; /* आपका प्राइमरी ब्राउन कलर */
-    filter: invert(0); 
-    transform: scale(1.1); 
+  .carousel-item img {
+    max-height: 500px; /* बहुत ज्यादा बड़ी स्क्रीन पर इमेज को फैलने से रोकेगा */
+  }
 }
 
 /* ✅ इंडिकेटर सेक्शन (Dots) ✅ */
 .carousel-indicators {
-    position: relative !important;
-    bottom: auto !important;
-    margin-top: 20px !important; 
-    margin-bottom: 20px !important;
-    z-index: 5;
-    display: flex !important;
-    justify-content: center !important;
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 20px !important; 
+  margin-bottom: 20px !important;
+  z-index: 5;
+  display: flex !important;
+  justify-content: center !important;
+  overflow: visible !important;
 }
 
 .carousel-indicators [data-bs-target] {
-    width: 40px !important;
-    height: 6px !important;
-    background-color: #ccc !important;
-    border: none !important;
-    opacity: 0.5 !important;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-    margin: 0 6px !important;
+  width: 40px !important;
+  height: 5px !important;
+  background-color: #ccc !important;
+  border: none !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  margin: 0 6px !important;
 }
 
 .carousel-indicators .active {
-    background-color: #5a2a3a !important; 
-    opacity: 1 !important;
-    width: 60px !important;
+  background-color: var(--primary-brown) !important;
+  opacity: 1 !important;
+  width: 60px !important;
 }
 
-/* --- अन्य सेक्शन्स --- */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
 .poetry-section,
 .main-content {
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
 }
 /* --- कविता सेक्शन स्टाइल (Poetry Section) - No Animation Version --- */
 
@@ -435,16 +414,16 @@
 }
 /* विषयानुसार कविता कार्ड्स */
 .canva-card-frame {
- aspect-ratio: 1 / 1.1; 
-  background: #ffffff;
+  aspect-ratio: 1 / 1.1; /* कार्ड को थोड़ा सा आयताकार (Rectangular) किया ताकि प्रीमियम लगे */
+  background: #ffff;
   border: 1px solid #eee;
-  padding: 8px;
+  padding: 8px; /* पैडिंग थोड़ी बढ़ाई */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 12px; /* कोनों को हल्का सा गोल किया */
 }
 
 /* 5 कार्ड्स दिखाने के लिए और उनके बीच खाली जगह (Gap) */
@@ -453,10 +432,9 @@
 }
 
 @media (min-width: 992px) {
-  .kavita-card-wrapper {
-    flex: 0 0 20% !important; 
+  .kavita-section .col-lg-2-4 {
+    flex: 0 0 20% !important; /* स्क्रीन पर 5 कार्ड फिक्स */
     max-width: 20% !important;
-    padding: 0 10px;
   }
 }
 
@@ -542,7 +520,9 @@
   margin: 0 auto !important;
 }
 
-/*पसंदीदा लेखक सेक्शन (Authors Section)*/
+/* ==========================================
+   पसंदीदा लेखक सेक्शन (Authors Section)
+   ========================================== */
 
 .authors-section .text-center {
   display: flex;
