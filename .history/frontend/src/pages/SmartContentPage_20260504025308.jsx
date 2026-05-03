@@ -83,7 +83,7 @@ const ContentPage = ({ title, subtitle, type }) => {
   >
     <div className="square-img-box">
       <img 
-        src="/covers/sangrah.jpg" 
+        src="/covers/frontend\public\covers\sangrah.jpg" 
         alt="संग्रह" 
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />

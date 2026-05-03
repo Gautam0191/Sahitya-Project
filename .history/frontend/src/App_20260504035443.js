@@ -157,7 +157,7 @@ function App() {
               element={
                 <ContentPage
                   type="nibandh"
-                  title="निबंध"
+                  title=" निबंध"
                   subtitle="साहितियक एवं सामाजिक वैचारिक संग्रह"
                 />
               }

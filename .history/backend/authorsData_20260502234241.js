@@ -134,7 +134,31 @@ const navbarPoetsData = [
       ],
     },
   },
- 
+  {
+    id: 107,
+    name: "गोपालदास 'नीeraj'",
+    category: "kavi",
+    categoryLabel: "महान गीतकार",
+    img: "/authors/neeraj.jpg",
+    birthDate: "4 जनवरी 1924",
+    deathDate: "19 जुलाई 2018",
+    birthPlace: "इटावा, उत्तर प्रदेश",
+    nickName: "नीरज",
+    searchTags:
+      "गोपालदास नीरज gopal das neeraj gopaldas niraj geetkar kavi sammelan karwan guzar gaya",
+    bio: "हिंदी मंचों के सबसे लोकप्रिय कवि और फिल्मी गीतों के सरताज।",
+    longBio:
+      "नीरज जी ने हिंदी गीतों को एक नई ऊंचाई दी। उन्होंने प्रेम, दर्शन और मानवीय संवेदनाओं को बहुत सरल शब्दों में पिरोया।",
+    structuredWorks: {
+      "काव्य संग्रह": [
+        "प्राण गीत",
+        "दर्द दिया है",
+        "आसावरी",
+        "कारवाँ गुजर गया",
+      ],
+      "गीत संग्रह": ["नीरज की पाती", "लहरें", "विभावरी"],
+    },
+  },
   {
     id: 108,
     name: "जयशंकर प्रसाद",
@@ -577,7 +601,7 @@ const navbarStorytellersData = [
     name: "अमृतलाल नागर",
     category: "kahanikar",
     categoryLabel: "सांस्कृतिक किस्सागो",
-    img: "/authors/amrut-lal-nagar.jpg",
+    img: "/authors/frontend\public\authors\amrut-lal-nagar.jpg",
     birthDate: "17 अगस्त 1916",
     deathDate: "23 फरवरी 1990",
     birthPlace: "आगरा, उत्तर प्रदेश",
@@ -612,7 +636,26 @@ const navbarStorytellersData = [
       उपन्यास: ["जहाज का पंछी", "सन्यासी"],
     },
   },
-  
+  {
+    id: 205,
+    name: "उदय प्रकाश",
+    category: "kahanikar",
+    categoryLabel: "जादुई यथार्थवादी",
+    img: "/authors/uday-prakash.jpg",
+    birthDate: "1 जनवरी 1952",
+    deathDate: "सक्रिय",
+    birthPlace: "मध्य प्रदेश",
+    nickName: "उदय",
+    searchTags:
+      "उदय प्रकाश uday prakash tirich tirchh peeli chhatri wali ladki dhattatreya ke dukh",
+    bio: "समकालीन कहानी के सबसे चर्चित नाम, जो जादुई यथार्थवाद के लिए जाने जाते हैं।",
+    longBio:
+      "उदय प्रकाश आधुनिक सत्ता के शोषण और राजनीति के क्रूर यथार्थ को अपनी कहानियों में फंतासी के साथ पिरोते हैं।",
+    structuredWorks: {
+      "प्रसिद्ध कहानियाँ": ["तिरिछ", "पाल गोमरा का स्कूटर", "दत्तारेय के दुख"],
+      "लघु उपन्यास": ["पीली छतरी वाली लड़की", "अरेबा-परेबा"],
+    },
+  },
   {
     id: 206,
     name: "कमलेश्वर",
@@ -629,6 +672,27 @@ const navbarStorytellersData = [
     structuredWorks: {
       "कहानी संग्रह": ["राजा निरबंसिया", "मांस का दरिया", "कस्बे का आदमी"],
       उपन्यास: ["कितने पाकिस्तान", "काली आँधी"],
+    },
+  },
+  {
+    id: 207,
+    name: "काशीनाथ सिंह",
+    category: "kahanikar",
+    categoryLabel: "बनारसी मिज़ाज के लेखक",
+    img: "/authors/kashinath-singh.jpg",
+    birthDate: "1 जनवरी 1937",
+    deathDate: "सक्रिय",
+    birthPlace: "चंदौली, उत्तर प्रदेश",
+    nickName: "काशी",
+    searchTags:
+      "काशीनाथ सिंह kashinath singh kashi ka assi rehan par ragghu kashi nath singh",
+    bio: "बनारस के मिजाज़ और बदलते समाज को कहानियों में उतारने वाले प्रमुख लेखक।",
+    structuredWorks: {
+      "प्रमुख रचनाएँ": [
+        "काशी का अस्सी",
+        "रेहन पर रग्घू",
+        "सदी का सबसे बड़ा आदमी",
+      ],
     },
   },
   {
@@ -1339,7 +1403,7 @@ const sherData = [
     name: "मिर्ज़ा ग़ालिब",
     category: "shayar",
     categoryLabel: "शायर",
-    img: "/authors/mirja-galib.jpg",
+    img: "/authors/ghalib.jpg",
     birthDate: "27 दिसंबर 1797",
     deathDate: "15 फरवरी 1869",
     birthPlace: "आगरा, उत्तर प्रदेश",
@@ -1363,7 +1427,7 @@ const sherData = [
     name: "दुष्यंत कुमार",
     category: "shayar",
     categoryLabel: "शायर",
-    img: "/authors/dushyant-kumar.jpg",
+    img: "/authors/dushyant.jpg",
     birthDate: "1 सितंबर 1933",
     deathDate: "30 दिसंबर 1975",
     birthPlace: "नवादा, बिजनौर, उ.प्र.",

@@ -565,7 +565,7 @@ const kavyData = [
 कर जोड़ खड़े प्रमुदित,
 निर्भय, दोनों पुकारते थे ‘जय-जय’!
 
-`,
+node `,
     img: "/covers/krishna-ki-chetavni.jpg",
     description: "वीर रस का सर्वश्रेष्ठ काव्य",
   },

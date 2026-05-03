@@ -56,7 +56,7 @@ const ReadingPage = () => {
                 </div>
               )}
 
-              <div className="reading-content lh-lg" style={{ fontSize: "1.2rem", textAlign: "center", whiteSpace: "pre-wrap",fontFamily: "serif",      /* साहित्यिक लुक के लिए */
+              <div className="reading-content lh-lg" style={{ fontSize: "1.2rem", textAlign: "center", whiteSpace: "pre-wrap"fontFamily: "serif",      /* साहित्यिक लुक के लिए */
     color: "#333" }}>
                 {workData?.content ? (
                   workData.content

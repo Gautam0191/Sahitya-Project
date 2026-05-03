@@ -1363,7 +1363,7 @@ const sherData = [
     name: "दुष्यंत कुमार",
     category: "shayar",
     categoryLabel: "शायर",
-    img: "/authors/dushyant-kumar.jpg",
+    img: "/authors/dushyant.jpg",
     birthDate: "1 सितंबर 1933",
     deathDate: "30 दिसंबर 1975",
     birthPlace: "नवादा, बिजनौर, उ.प्र.",
