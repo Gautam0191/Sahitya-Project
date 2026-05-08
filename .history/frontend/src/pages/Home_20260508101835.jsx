@@ -233,7 +233,7 @@ const Home = ({
           </div>
         )}
       </section>
-
+      
       {/* --- 3. कथा कलश --- */}
       <section className="kahani-section py-5">
         <div className="container px-md-5 px-3">
@@ -267,7 +267,7 @@ const Home = ({
                       }}
                     >
                       <img
-                        
+                        /* ✅ SMART PATH: अगर डेटा में पहले से /covers/ है तो दोबारा नहीं जोड़ेगा */
                         src={
                           featuredStory.img
                             ? featuredStory.img.includes("covers/")

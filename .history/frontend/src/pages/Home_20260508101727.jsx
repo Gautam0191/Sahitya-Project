@@ -201,11 +201,11 @@ const Home = ({
                         className="img-fluid"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.style.display = "none";
+                          e.target.style.display = "none"; // इमेज खराब हो तो उसे हटा दो
                         }}
                       />
                     ) : (
-                      
+                      /* ✅ इमेज न होने पर रचना का नाम दिखेगा */
                       <span className="text-muted small text-center px-2">
                         {item.title}
                       </span>
@@ -233,7 +233,6 @@ const Home = ({
           </div>
         )}
       </section>
-
       {/* --- 3. कथा कलश --- */}
       <section className="kahani-section py-5">
         <div className="container px-md-5 px-3">
@@ -267,7 +266,7 @@ const Home = ({
                       }}
                     >
                       <img
-                        
+                        /* ✅ SMART PATH: अगर डेटा में पहले से /covers/ है तो दोबारा नहीं जोड़ेगा */
                         src={
                           featuredStory.img
                             ? featuredStory.img.includes("covers/")
